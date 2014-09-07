@@ -66,11 +66,6 @@
                                     <strong id='userdata_followers'>0</strong> Followers
                                 </a>
                             </li>
-                            <li>
-                                <a class='js-nav'>
-                                    <strong id='unreadCounter'>0</strong> Unread
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <div class='home-tweet-box tweet-box component tweet-user'></div>
@@ -86,6 +81,10 @@
                 <div class='stream-container'>
                     <div class='stream home-stream'>
                         <div class='stream-items' id='stream-items-id'>
+                            <div id='loadingPosts'>
+                                <img src='/images/loadingPosts.gif' alt='Loading Tweets...'>
+                                <div id='loadingPostsLabel'>Loading Tweets...</div>
+                            </div>
                             <div id='streamTail'></div>
                         </div>
                     </div>

@@ -26,4 +26,51 @@ switch ($_GET["action"]) {
             "userdata"  =>  $data,
         ]);
         break;
+
+
+    case "getPosts":
+        $exclude = Dict::post("posts", []);
+        $status = round(Dict::post("status", 0));
+
+        $query = "SELECT * FROM posts
+                WHERE status=?
+                ORDER BY date, id
+                LIMIT 20";
+        $params = [
+            $status,
+        ];
+        $result = Sql::query($query, $params);
+
+        $posts = [];
+        foreach ($result as $row) {
+            if (in_array($row["id"], $exclude)) {
+                continue;
+            }
+            $post = new Post($row);
+            $posts[] = [
+                "id"    =>  $row["id"],
+                "html"  =>  $post->html(),
+            ];
+        }
+
+        echo Json::encode([
+            "status"    =>  1,
+            "posts"     =>  $posts,
+            "unread"    =>  App::getUnreadCount(),
+        ]);
+        break;
+
+
+    case "updatePost":
+        Sql::update("posts", [
+            "status"    =>  $_POST["status"],
+        ], [
+            "id"        =>  $_POST["post"],
+        ]);
+
+        echo Json::encode([
+            "status"    =>  1,
+            "unread"    =>  App::getUnreadCount(),
+        ]);
+        break;
 }

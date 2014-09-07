@@ -1,6 +1,29 @@
 div.stream-item-header {
     z-index: 10;
 }
+img.actionPost {
+    width: 14px;
+    float: right;
+    z-index: 20;
+    margin-left: 10px;
+    cursor: pointer;
+}
+div#loadingPosts {
+    background-color: #ffffff;
+    text-align: center;
+    border: solid 1px #000000;
+    border-width: 0px 1px;
+    padding: 10px 0px;
+    border-bottom: solid 1px #e8e8e8;
+    position: relative;
+}
+div#loadingPostsLabel {
+    position: absolute;
+    right: 6px;
+    bottom: 1px;
+    color: #777777;
+    font-weight: bold;
+}
 #streamTail {
     height: 10px;
     background-color: #ffffff;
