@@ -24,6 +24,12 @@ div#loadingPostsLabel {
     color: #777777;
     font-weight: bold;
 }
+img#undo {
+    float: right;
+    height: 24px;
+    cursor: pointer;
+    display: none;
+}
 #streamTail {
     height: 10px;
     background-color: #ffffff;

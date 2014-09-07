@@ -2,6 +2,7 @@ var twitter = {
     status      :   1,
     timeout     :   false,
     loading     :   false,
+    postStack   :   [],
 
     checkPosts  :   function() {
         if($("div.postContainer").length < 20) {
@@ -83,6 +84,10 @@ jQuery.fn.twitterPost = function() {
         var status = $(this).attr("data-status")
 
         var html = $("<div>").append($("#postContainer_" + post).clone()).html()
+        twitter.postStack.push(html)
+        if(twitter.postStack.length == 1) {
+            $("#undo").show()
+        }
 
         $("#postContainer_" + post).slideUp(300,function() {
             $(this).remove()
@@ -107,6 +112,28 @@ jQuery.fn.twitterPost = function() {
 
 $(document).ready(function() {
 
+    $("#undo").click(function() {
+        var html = twitter.postStack.pop()
+        var div = $(html)
+        $("#stream-items-id").prepend(div)
+        div.hide().twitterPost().slideDown()
+        if(twitter.postStack.length < 1) {
+            $("#undo").hide()
+        }
+        $.ajax({
+            url         :   "ajax.php?action=updatePost",
+            type        :   "post",
+            data        :   {
+                post        :   div.data("post"),
+                status      :   twitter.status
+            },
+            dataType    :   "json",
+            success     :   function(data) {
+                $("#unreadCounter").html(data.unread)
+            }
+        })
+    })
+
     $.ajax({
         url         :   "ajax.php?action=getUserData",
         type        :   "get",
@@ -121,5 +148,4 @@ $(document).ready(function() {
     $("#loadingPosts").show()
     clearTimeout(twitter.timeout)
     twitter.loadPosts()
-
 })
