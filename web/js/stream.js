@@ -134,6 +134,12 @@ jQuery.fn.twitterPost = function() {
 
 $(document).ready(function() {
 
+    $(document).keypress(function(event) {
+        if(event.keyCode == 46) {
+            $("img.actionPost.active").first().click()
+        }
+    })
+
     $(".setStatus").click(function() {
         twitter.setStatus($(this).data("status"))
     })
