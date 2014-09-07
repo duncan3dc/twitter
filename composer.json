@@ -1,0 +1,14 @@
+{
+    "name": "duncan3dc/twitter",
+    "description": "A webapp showing tweets and posts from other souces",
+    "require": {
+        "duncan3dc/helpers": "*",
+        "duncan3dc/domparser": "*",
+        "duncan3dc/sql-class": "*",
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {"duncan3dc\\Twitter\\": "src/"}
+    },
+    "minimum-stability": "stable"
+}
