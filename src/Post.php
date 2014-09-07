@@ -48,7 +48,7 @@ class Post
                 $this->fullname = $this->data["user"]["name"];
                 $this->avatar = $this->data["user"]["profile_image_url"];
                 $this->link = $this->hostname . $this->username . "/status/" . $this->data["id_str"];
-                $this->text = $this->data["text"];
+                $this->text = $this->tweetMeta();
                 break;
         }
     }
@@ -101,5 +101,99 @@ class Post
         $content .= "</div>";
 
         return $content;
+    }
+
+
+    public function tweetMeta()
+    {
+        $splices = [];
+
+        foreach ($this->data["entities"]["hashtags"] as $hashtag) {
+            $splices[] = [
+                "type"  =>  "hashtag",
+                "start" =>  $hashtag["indices"][0],
+                "end"   =>  $hashtag["indices"][1],
+                "text"  =>  $hashtag["text"],
+            ];
+        }
+
+        foreach ($this->data["entities"]["user_mentions"] as $mention) {
+            $splices[] = [
+                "type"  =>  "mention",
+                "start" =>  $mention["indices"][0],
+                "end"   =>  $mention["indices"][1],
+                "text"  =>  $mention["screen_name"],
+            ];
+        }
+
+        foreach ($this->data["entities"]["urls"] as $url) {
+            $splices[] = [
+                "type"  =>  "link",
+                "start" =>  $url["indices"][0],
+                "end"   =>  $url["indices"][1],
+                "text"  =>  $url["display_url"],
+                "url"   =>  $url["expanded_url"],
+            ];
+        }
+
+        $medias = isset($this->data["entities"]["media"]) ? $this->data["entities"]["media"] : [];
+        foreach ($medias as $media) {
+            $splices[] = [
+                "type"  =>  "link",
+                "start" =>  $media["indices"][0],
+                "end"   =>  $media["indices"][1],
+                "text"  =>  $media["display_url"],
+                "url"   =>  $media["media_url"],
+            ];
+        }
+
+        usort($splices, function($val1, $val2) {
+            if ($val1["start"] < $val2["start"]) {
+                return -1;
+            }
+            if ($val1["start"] > $val2["start"]) {
+                return 1;
+            }
+            return 0;
+        });
+
+        $text = $this->data["text"];
+        $append = "";
+        $adjust = 0;
+        foreach ($splices as $val) {
+
+            switch ($val["type"]) {
+
+                case "hashtag";
+                    $hashtag = "#" . $val["text"];
+                    $new = "<a href='" . $this->hostname . "search?q=" . urlencode($hashtag) . "'>" . $hashtag . "</a>";
+                    break;
+
+                case "mention":
+                    $new = "<a href='" . $this->hostname . $val["text"] . "'>@" . $val["text"] . "</a>";
+                    break;
+
+                case "link":
+                    $new = "<a href='" . $val["url"] . "'>" . $val["text"] . "</a>";
+                    break;
+
+                default:
+                    $new = $val["text"];
+            }
+
+            $startPos = $val["start"];
+            $endPos = $val["end"];
+            $diff = $endPos - $startPos;
+
+            $start = mb_substr($text, 0, $startPos + $adjust);
+            $end = mb_substr($text, $endPos + $adjust);
+
+            $adjust += (mb_strlen($new) - $diff);
+
+            $text = $start . $new . $end;
+        }
+        $text .= $append;
+
+        return nl2br($text);
     }
 }
