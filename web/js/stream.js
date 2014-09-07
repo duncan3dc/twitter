@@ -1,6 +1,7 @@
 var twitter = {
     status      :   1,
     showImages  :   localStorage.getItem("showImages"),
+    delay       :   localStorage.getItem("delay"),
     timeout     :   false,
     loading     :   false,
     postStack   :   [],
@@ -54,6 +55,7 @@ var twitter = {
             type        :   "post",
             data        :   {
                 status      :   twitter.status,
+                delay       :   twitter.delay,
                 posts       :   posts
             },
             dataType    :   "json",
@@ -168,6 +170,13 @@ $(document).ready(function() {
             }
         }
     })
+
+    $("#delay")
+        .val(twitter.delay)
+        .keyup(function() {
+            twitter.delay = $(this).val()
+            localStorage.setItem("delay",twitter.delay)
+        })
 
     $.ajax({
         url         :   "ajax.php?action=getHashtags",

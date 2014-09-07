@@ -39,13 +39,16 @@ switch ($_GET["action"]) {
     case "getPosts":
         $exclude = Dict::post("posts", []);
         $status = round(Dict::post("status", 0));
+        $delay = round(Dict::post("delay", 0));
 
         $query = "SELECT * FROM posts
                 WHERE status=?
+                    AND date<?
                 ORDER BY date, id
                 LIMIT 20";
         $params = [
             $status,
+            time() - ($delay * 60),
         ];
         $result = Sql::query($query, $params);
 
