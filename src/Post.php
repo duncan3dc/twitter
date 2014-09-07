@@ -186,13 +186,18 @@ class Post
         }
 
         foreach ($this->data["entities"]["urls"] as $url) {
-            $splices[] = [
+            $splice = [
                 "type"  =>  "link",
                 "start" =>  $url["indices"][0],
                 "end"   =>  $url["indices"][1],
                 "text"  =>  $url["display_url"],
                 "url"   =>  $url["expanded_url"],
             ];
+            if (isset($url["video"])) {
+                $splice["type"] = "video";
+                $splice["video"] = $url["video"];
+            }
+            $splices[] = $splice;
         }
 
         $medias = isset($this->data["entities"]["media"]) ? $this->data["entities"]["media"] : [];
@@ -267,6 +272,12 @@ class Post
                     $append .= "<a href='" . $val["fullsize"] . "'>";
                         $append .= "<img class='postImage' src='" . $val["src"] . "'>";
                     $append .= "</a>";
+                    break;
+
+                case "video":
+                    $new = "<a href='" . $val["url"] . "'>" . $val["text"] . "</a>";
+                    $append .= "<br>";
+                    $append .= $val["video"];
                     break;
 
                 default:

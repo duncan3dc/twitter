@@ -128,11 +128,11 @@ jQuery.fn.twitterPost = function() {
         e.stopPropagation()
     }).addClass("active")
 
-    if($("img.postImage",this).length > 0) {
-        $("img.postImage",this).css("display",twitter.showImages)
+    if($("img.postImage, video",this).length > 0) {
+        $("img.postImage, video",this).css("display",twitter.showImages)
         $(this).click(function() {
-            var display = ($("img.postImage",this).css("display") == "none") ? "inline" : "none"
-            $("img.postImage",this).css("display",display)
+            var display = ($("img.postImage, video",this).css("display") == "none") ? "inline" : "none"
+            $("img.postImage, video",this).css("display",display)
         })
     }
 
@@ -196,7 +196,7 @@ $(document).ready(function() {
     $("#showImages").prop("checked",(twitter.showImages == "inline")).click(function() {
         twitter.showImages = $(this).prop("checked") ? "inline" : "none"
         localStorage.setItem("showImages",twitter.showImages)
-        $("img.postImage").css("display",twitter.showImages)
+        $("img.postImage, video").css("display",twitter.showImages)
     })
 
     $.ajax({
