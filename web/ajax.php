@@ -28,6 +28,14 @@ switch ($_GET["action"]) {
         break;
 
 
+    case "getUnreadCount":
+        echo Json::encode([
+            "status"    =>  1,
+            "unread"    =>  App::getUnreadCount(),
+        ]);
+        break;
+
+
     case "getPosts":
         $exclude = Dict::post("posts", []);
         $status = round(Dict::post("status", 0));

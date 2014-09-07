@@ -7,6 +7,10 @@ var twitter = {
         if($("div.postContainer").length < 20) {
             twitter.loadPosts()
         } else {
+            $.get("ajax.php?action=getUnreadCount",function(json) {
+                var data = JSON.parse(json)
+                $("#unreadCounter").html(data.unread)
+            })
             twitter.timeout = setTimeout(twitter.checkPosts,10 * 1000)
         }
     },
@@ -47,6 +51,7 @@ var twitter = {
                         $("#loadingPosts").before(post)
                         post.twitterPost()
                     }
+                    $("#unreadCounter").html(data.unread)
                     twitter.updatePostCount()
                 }
                 twitter.timeout = setTimeout(twitter.checkPosts,10 * 1000)
@@ -84,6 +89,15 @@ jQuery.fn.twitterPost = function() {
             twitter.updatePostCount()
         })
 
+        $.ajax({
+            url         :   "ajax.php?action=updatePost",
+            type        :   "post",
+            data        :   {post : post, status : status},
+            dataType    :   "json",
+            success     :   function(data) {
+                $("#unreadCounter").html(data.unread)
+            }
+        })
         e.stopPropagation()
     }).addClass("active")
 
@@ -107,4 +121,5 @@ $(document).ready(function() {
     $("#loadingPosts").show()
     clearTimeout(twitter.timeout)
     twitter.loadPosts()
+
 })
