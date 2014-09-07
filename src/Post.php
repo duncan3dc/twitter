@@ -69,6 +69,15 @@ class Post
                 }
                 break;
 
+            case "reddit":
+                $this->hostname = "http://reddit.com/";
+                $this->username = $this->data["author"];
+                $this->fullname = $this->data["author"];
+                $this->avatar = in_array($this->data["thumbnail"], ["", "self", "default"]) ? "/images/reddit.png" : $this->data["thumbnail"];
+                $this->link = $this->hostname . $this->data["permalink"];
+                $this->text = $this->data["title"] . "<br><a href='" . $this->link . "'>" . $this->link . "</a>";
+                break;
+
             case "twitter":
                 $this->hostname = "https://twitter.com/";
                 $this->username = $this->data["user"]["screen_name"];
