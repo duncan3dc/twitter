@@ -81,4 +81,23 @@ switch ($_GET["action"]) {
             "unread"    =>  App::getUnreadCount(),
         ]);
         break;
+
+
+    case "getHashtags":
+        $hashtags = [];
+
+        $query = "SELECT hashtag FROM hashtags
+                GROUP BY hashtag
+                ORDER BY COUNT(*) DESC, MAX(date) DESC
+                LIMIT 10";
+        $result = Sql::query($query);
+        foreach ($result as $row) {
+            $hashtags[] = $row["hashtag"];
+        }
+
+        echo Json::encode([
+            "status"    =>  1,
+            "hashtags"  =>  $hashtags,
+        ]);
+        break;
 }

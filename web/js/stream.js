@@ -169,6 +169,21 @@ $(document).ready(function() {
         }
     })
 
+    $.ajax({
+        url         :   "ajax.php?action=getHashtags",
+        type        :   "get",
+        dataType    :   "json",
+        success     :   function(data) {
+            var hashtag = ""
+            for(var i in data.hashtags) {
+                hashtag = data.hashtags[i]
+                $("<li class='trend-item js-trend-item'>")
+                    .append("<a class='js-nav' href='https://twitter.com/search?q=" + hashtag + "&ampsrc=tren'>#" + hashtag + "</a>")
+                    .appendTo("#hashtags")
+            }
+        }
+    })
+
     twitter.setStatus(twitter.status)
 
 })
