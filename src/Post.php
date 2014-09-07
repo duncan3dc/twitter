@@ -43,6 +43,15 @@ class Post
 
         switch ($this->type) {
 
+            case "askfm":
+                $this->hostname = "http://ask.fm/";
+                $this->username = $this->data["username"];
+                $this->fullname = $this->data["fullname"];
+                $this->avatar = $this->data["avatar"];
+                $this->link = $this->data["link"];
+                $this->text = '"<i>' . $this->data["question"] . '</i>"<br>' . $this->data["answer"];
+                break;
+
             case "instagram":
                 $this->hostname = "http://instagram.com/";
                 $this->username = $this->data["user"]["username"];
