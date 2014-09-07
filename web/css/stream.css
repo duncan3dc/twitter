@@ -24,6 +24,11 @@ div#loadingPostsLabel {
     color: #777777;
     font-weight: bold;
 }
+img.postImage {
+    max-width: 500px;
+    margin-bottom: 8px;
+    display: none;
+}
 .setStatus {
     cursor: pointer;
 }

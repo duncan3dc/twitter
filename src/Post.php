@@ -197,13 +197,38 @@ class Post
 
         $medias = isset($this->data["entities"]["media"]) ? $this->data["entities"]["media"] : [];
         foreach ($medias as $media) {
-            $splices[] = [
+            $splice = [
                 "type"  =>  "link",
                 "start" =>  $media["indices"][0],
                 "end"   =>  $media["indices"][1],
                 "text"  =>  $media["display_url"],
                 "url"   =>  $media["media_url"],
             ];
+            if ($media["type"] == "photo") {
+                if ($image = $media["id_str"]) {
+                    $splice["type"] = "image";
+                    $path = "images/cache";
+                    $fullpath = Env::path("web/" . $path . "/original/" . $image);
+                    if (!file_exists($fullpath)) {
+                        $row = Sql::select("postimages", [
+                            "post"  =>  $this->post,
+                            "image" =>  $image,
+                        ]);
+                        file_put_contents($fullpath, $row["data"]);
+                    }
+                    $splice["fullsize"] = Image::img([
+                        "path"      =>  $path,
+                        "basename"  =>  $image,
+                    ]);
+                    $splice["src"] = Image::img([
+                        "path"      =>  $path,
+                        "basename"  =>  $image,
+                        "width"     =>  500,
+                        "height"    =>  500,
+                    ]);
+                }
+            }
+            $splices[] = $splice;
         }
 
         usort($splices, function($val1, $val2) {
@@ -234,6 +259,14 @@ class Post
 
                 case "link":
                     $new = "<a href='" . $val["url"] . "'>" . $val["text"] . "</a>";
+                    break;
+
+                case "image":
+                    $new = "<a href='" . $val["url"] . "'>" . $val["text"] . "</a>";
+                    $append .= "<br>";
+                    $append .= "<a href='" . $val["fullsize"] . "'>";
+                        $append .= "<img class='postImage' src='" . $val["src"] . "'>";
+                    $append .= "</a>";
                     break;
 
                 default:

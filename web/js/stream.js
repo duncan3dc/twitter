@@ -128,7 +128,16 @@ jQuery.fn.twitterPost = function() {
         e.stopPropagation()
     }).addClass("active")
 
+    if($("img.postImage",this).length > 0) {
+        $("img.postImage",this).css("display",twitter.showImages)
+        $(this).click(function() {
+            var display = ($("img.postImage",this).css("display") == "none") ? "inline" : "none"
+            $("img.postImage",this).css("display",display)
+        })
+    }
+
     return this
+
 }
 
 
@@ -183,6 +192,12 @@ $(document).ready(function() {
             twitter.delay = $(this).val()
             localStorage.setItem("delay",twitter.delay)
         })
+
+    $("#showImages").prop("checked",(twitter.showImages == "inline")).click(function() {
+        twitter.showImages = $(this).prop("checked") ? "inline" : "none"
+        localStorage.setItem("showImages",twitter.showImages)
+        $("img.postImage").css("display",twitter.showImages)
+    })
 
     $.ajax({
         url         :   "ajax.php?action=getHashtags",
