@@ -1,0 +1,10 @@
+div.stream-item-header {
+    z-index: 10;
+}
+#streamTail {
+    height: 10px;
+    background-color: #ffffff;
+    border: solid 1px #000000;
+    border-width: 0px 1px;
+    border-radius: 0px 0px 6px 6px;
+}

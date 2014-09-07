@@ -1,0 +1,11 @@
+.wrapper.black {
+    background: url(https://si0.twimg.com/a/1354824529/t1/img/wash-black-30.png);
+}
+body {
+    background-position: left 40px;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-color: #1A1B1F;
+    background-image: url(https://si0.twimg.com/images/themes/theme9/bg.gif);
+}
