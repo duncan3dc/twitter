@@ -69,6 +69,20 @@ class Post
                 }
                 break;
 
+            case "php":
+                $this->hostname = "http://news.php.net/";
+                $a = (new HtmlParser($this->data["description"]))->getTag("a");
+                $email = $a->getAttribute("href");
+                $email = str_replace("mailto:", "", $email);
+                $email = str_replace("+dot+", ".", $email);
+                $email = str_replace("+at+", "@", $email);
+                $this->username = $email;
+                $this->fullname = $a->nodeValue;
+                $this->avatar = "/images/php.png";
+                $this->link = $this->data["link"];
+                $this->text = $this->data["title"] . "<br><a href='" . $this->data["link"] . "'>" . $this->data["link"] . "</a>";
+                break;
+
             case "reddit":
                 $this->hostname = "http://reddit.com/";
                 $this->username = $this->data["author"];
