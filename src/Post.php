@@ -77,6 +77,15 @@ class Post
                 $this->link = $this->hostname . $this->username . "/status/" . $this->data["id_str"];
                 $this->text = $this->tweetMeta();
                 break;
+
+            case "wikipedia":
+                $this->hostname = "http://en.wikipedia.org/wiki/Special:Contributions/";
+                $this->username = $this->data["author"];
+                $this->fullname = $this->data["author"];
+                $this->avatar = "/images/wikipedia.png";
+                $this->link = $this->data["link"];
+                $this->text = "<a href='" . $this->data["link"] . "'>" . $this->data["article"] . "</a><br><i>" . $this->data["comments"] . "</i>";
+                break;
         }
     }
 
