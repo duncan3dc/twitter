@@ -42,6 +42,24 @@ class Post
         }
 
         switch ($this->type) {
+
+            case "instagram":
+                $this->hostname = "http://instagram.com/";
+                $this->username = $this->data["user"]["username"];
+                $this->fullname = $this->data["user"]["full_name"];
+                $this->avatar = $this->data["user"]["profile_picture"];
+                $this->link = $this->data["link"];
+                $this->text = $this->data["caption"]["text"] . " <a href='" . $this->link . "'>" . $this->link . "</a>";
+                if ($this->data["type"] == "image") {
+                    if ($url = $this->data["images"]["standard_resolution"]["url"]) {
+                        $this->text .= "<br>";
+                        $this->text .= "<a href='" . $url . "'>";
+                            $this->text .= "<img class='postImage' src='" . $url . "'>";
+                        $this->text .= "</a>";
+                    }
+                }
+                break;
+
             case "twitter":
                 $this->hostname = "https://twitter.com/";
                 $this->username = $this->data["user"]["screen_name"];
