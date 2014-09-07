@@ -60,6 +60,7 @@ class Post
             $content .= "<div class='tweet original-tweet js-stream-tweet'>";
                 $content .= "<div class='content'>";
                     $content .= "<img class='actionPost' data-post='" . $this->id . "' data-status='0' src='/images/x.gif'>";
+                    $content .= "<img class='actionPost' data-post='" . $this->id . "' data-status='2' src='/images/save.png'>";
                     $content .= "<div class='stream-item-header'>";
                         $content .= "<small class='time'>";
                             if ($this->retweet) {

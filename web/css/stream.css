@@ -24,6 +24,9 @@ div#loadingPostsLabel {
     color: #777777;
     font-weight: bold;
 }
+.setStatus {
+    cursor: pointer;
+}
 img#undo {
     float: right;
     height: 24px;

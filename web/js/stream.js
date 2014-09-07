@@ -1,8 +1,28 @@
 var twitter = {
     status      :   1,
+    showImages  :   localStorage.getItem("showImages"),
     timeout     :   false,
     loading     :   false,
     postStack   :   [],
+
+    setStatus   :   function(status) {
+        if(twitter.loading) {
+            setTimeout("twitter.setStatus(" + status + ")",100)
+            return false
+        }
+
+        twitter.status = status
+        twitter.postStack = []
+        $("#undo").hide()
+
+        $(".setStatus").parent().removeClass("active")
+        $(".setStatus[data-status='" + twitter.status + "']").parent().addClass("active")
+
+        $("#loadingPosts").show()
+        $("div.postContainer").remove()
+        clearTimeout(twitter.timeout)
+        twitter.loadPosts()
+    },
 
     checkPosts  :   function() {
         if($("div.postContainer").length < 20) {
@@ -112,6 +132,10 @@ jQuery.fn.twitterPost = function() {
 
 $(document).ready(function() {
 
+    $(".setStatus").click(function() {
+        twitter.setStatus($(this).data("status"))
+    })
+
     $("#undo").click(function() {
         var html = twitter.postStack.pop()
         var div = $(html)
@@ -145,7 +169,6 @@ $(document).ready(function() {
         }
     })
 
-    $("#loadingPosts").show()
-    clearTimeout(twitter.timeout)
-    twitter.loadPosts()
+    twitter.setStatus(twitter.status)
+
 })
