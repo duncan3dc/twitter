@@ -138,7 +138,9 @@ class Post
                         $content .= "</a>";
                     $content .= "</div>";
                     $content .= "<p class='js-tweet-text'>";
-                        $content .= $this->text;
+                        $content .= preg_replace_callback("/  +/", function($match) {
+                            return str_replace(" ", "&nbsp;", $match[0]);
+                        }, $this->text);
                     $content .= "</p>";
                     $content .= "<div class='stream-item-footer'>";
                         $content .= "<div class='context'>";
