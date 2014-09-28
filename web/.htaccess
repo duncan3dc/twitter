@@ -1,0 +1,11 @@
+Header set Cache-Control "no-cache"
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|pdf)$">
+    Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+
+RewriteEngine On
+
+# Redirect any requests for files that don't exist to our index.php
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L]

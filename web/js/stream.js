@@ -29,7 +29,7 @@ var twitter = {
         if($("div.postContainer").length < 20) {
             twitter.loadPosts()
         } else {
-            $.get("ajax.php?action=getUnreadCount",function(json) {
+            $.get("/getUnreadCount",function(json) {
                 var data = JSON.parse(json)
                 $("#unreadCounter").html(data.unread)
             })
@@ -51,7 +51,7 @@ var twitter = {
         })
 
         $.ajax({
-            url         :   "ajax.php?action=getPosts",
+            url         :   "/get-posts",
             type        :   "post",
             data        :   {
                 status      :   twitter.status,
@@ -117,7 +117,7 @@ jQuery.fn.twitterPost = function() {
         })
 
         $.ajax({
-            url         :   "ajax.php?action=updatePost",
+            url         :   "/update-post",
             type        :   "post",
             data        :   {post : post, status : status},
             dataType    :   "json",
@@ -162,7 +162,7 @@ $(document).ready(function() {
             $("#undo").hide()
         }
         $.ajax({
-            url         :   "ajax.php?action=updatePost",
+            url         :   "/update-post",
             type        :   "post",
             data        :   {
                 post        :   div.data("post"),
@@ -176,7 +176,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url         :   "ajax.php?action=getUserData",
+        url         :   "/get-user-data",
         type        :   "get",
         dataType    :   "json",
         success     :   function(data) {
@@ -200,7 +200,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url         :   "ajax.php?action=getHashtags",
+        url         :   "/get-hashtags",
         type        :   "get",
         dataType    :   "json",
         success     :   function(data) {

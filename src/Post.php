@@ -9,8 +9,6 @@ use duncan3dc\Helpers\Image;
 use duncan3dc\Helpers\Json;
 use duncan3dc\Laravel\Blade;
 
-mb_internal_encoding("UTF-8");
-
 class Post
 {
     public  $id;
