@@ -60,7 +60,7 @@ switch ($_GET["action"]) {
             $post = new Post($row);
             $posts[] = [
                 "id"    =>  $row["id"],
-                "html"  =>  $post->html(),
+                "html"  =>  $post->make(),
             ];
         }
 

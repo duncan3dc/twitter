@@ -7,6 +7,7 @@ use duncan3dc\Helpers\Env;
 use duncan3dc\Helpers\Helper;
 use duncan3dc\Helpers\Image;
 use duncan3dc\Helpers\Json;
+use duncan3dc\Laravel\Blade;
 
 mb_internal_encoding("UTF-8");
 
@@ -113,55 +114,12 @@ class Post
     }
 
 
-    public function html()
+    public function make()
     {
-        $content = "<div id='postContainer_" . $this->id . "' data-post='" . $this->id . "' class='postContainer js-stream-item stream-item stream-item expanding-stream-item'>";
-            $content .= "<div class='tweet original-tweet js-stream-tweet'>";
-                $content .= "<div class='content'>";
-                    $content .= "<img class='actionPost' data-post='" . $this->id . "' data-status='0' src='/images/x.gif'>";
-                    $content .= "<img class='actionPost' data-post='" . $this->id . "' data-status='2' src='/images/save.png'>";
-                    $content .= "<div class='stream-item-header'>";
-                        $content .= "<small class='time'>";
-                            if ($this->retweet) {
-                                $content .= date("d/m/y H:i:s", strtotime($this->data["created_at"]));
-                                $content .= "<br>";
-                            }
-                            $content .= "<a href='" . $this->link . "'>";
-                                $content .= date("d/m/y H:i:s", $this->date);
-                            $content .= "</a>";
-                        $content .= "</small>";
-                        $content .= "<a class='account-group js-account-group js-action-profile js-user-profile-link js-nav' href='" . $this->hostname . $this->username . "'>";
-                            $content .= "<img class='avatar js-action-profile-avatar' src='" . $this->avatar . "'>";
-                            $content .= "<strong class='fullname'>" . $this->fullname . "</strong>";
-                            $content .= "&nbsp;";
-                            $content .= "<span class='username'>@" . $this->username . "</span>";
-                        $content .= "</a>";
-                    $content .= "</div>";
-                    $content .= "<p class='js-tweet-text'>";
-                        $content .= preg_replace_callback("/  +/", function($match) {
-                            return str_replace(" ", "&nbsp;", $match[0]);
-                        }, $this->text);
-                    $content .= "</p>";
-                    $content .= "<div class='stream-item-footer'>";
-                        $content .= "<div class='context'>";
-                            $content .= "<span class='with-icn'>";
-                                if ($this->retweet) {
-                                    $content .= "<span class='js-retweet-text'>";
-                                        $content .= "Retweeted by ";
-                                        $content .= $this->retweet["user"]["name"] . " ";
-                                        $content .= "(<a class='pretty-link js-user-profile-link' href='" . $this->hostname . $this->retweet["user"]["screen_name"] . "'>";
-                                            $content .= "@" . $this->retweet["user"]["screen_name"];
-                                        $content .= "</a>)";
-                                    $content .= "</span>";
-                                }
-                            $content .= "</span>";
-                        $content .= "</div>";
-                    $content .= "</div>";
-                $content .= "</div>";
-            $content .= "</div>";
-        $content .= "</div>";
-
-        return $content;
+        return Blade::make("post", [
+            "post"  =>  $this,
+            "data"  =>  $this->data,
+        ])->__toString();
     }
 
 
