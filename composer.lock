@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d43c606519abd3c1f3fe91b19532c918",
+    "hash": "86a92e8c8130d09f6d1a2c2337c87df7",
     "packages": [
         {
             "name": "duncan3dc/blade",
@@ -504,7 +504,7 @@
     "stability-flags": [],
     "prefer-stable": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=5.6.0"
     },
     "platform-dev": []
 }
