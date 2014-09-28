@@ -2,8 +2,9 @@
     "name": "duncan3dc/twitter",
     "description": "A webapp showing tweets and posts from other souces",
     "require": {
-        "duncan3dc/helpers": "*",
+        "duncan3dc/blade": "*",
         "duncan3dc/domparser": "*",
+        "duncan3dc/helpers": "*",
         "duncan3dc/sql-class": "*",
         "php": ">=5.4.0"
     },
