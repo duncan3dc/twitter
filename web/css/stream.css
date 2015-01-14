@@ -1,3 +1,21 @@
+div#timeline {
+    float: left;
+    width: 622px;
+}
+div.dashboard {
+    float: right;
+}
+div.global-nav div.container {
+    width: 965px;
+}
+div#page-container {
+    width: 937px;
+}
+ul.stats a {
+    text-transform: none;
+    font-size: 12px;
+}
+
 div.stream-item-header {
     z-index: 10;
 }
@@ -44,4 +62,32 @@ img#undo {
     border: solid 1px #000000;
     border-width: 0px 1px;
     border-radius: 0px 0px 6px 6px;
+}
+
+@media screen and (max-width: 960px) {
+    div#page-container {
+        width: 622px;
+        float: left;
+    }
+    div.dashboard {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    div#page-container {
+        width: 100%;
+    }
+    div#timeline {
+        width: 95%;
+    }
+    div.tweet {
+        min-height: 70px;
+    }
+    img.actionPost {
+        width: 50px;
+    }
+    img.postImage {
+        width: 100%;
+    }
 }
