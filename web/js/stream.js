@@ -1,6 +1,7 @@
 var twitter = {
     status      :   1,
     showImages  :   localStorage.getItem("showImages"),
+    types       :   JSON.parse(localStorage.getItem("types")),
     delay       :   localStorage.getItem("delay"),
     timeout     :   false,
     loading     :   false,
@@ -55,6 +56,7 @@ var twitter = {
             type        :   "post",
             data        :   {
                 status      :   twitter.status,
+                types       :   twitter.types,
                 delay       :   twitter.delay,
                 posts       :   posts
             },
@@ -185,6 +187,21 @@ $(document).ready(function() {
             }
         }
     })
+
+    $(".types")
+        .change(function() {
+            twitter.types = []
+            $(".types").each(function() {
+                 if ($(this).prop("checked")) {
+                     twitter.types.push($(this).val())
+                 }
+            })
+            localStorage.setItem("types", JSON.stringify(twitter.types))
+        }).each(function() {
+            if (twitter.types.indexOf($(this).val()) > -1) {
+                $(this).prop("checked", true)
+            }
+        })
 
     $("#delay")
         .val(twitter.delay)

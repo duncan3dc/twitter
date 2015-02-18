@@ -15,6 +15,9 @@ ul.stats a {
     text-transform: none;
     font-size: 12px;
 }
+input.types {
+    width: 30px;
+}
 
 div.stream-item-header {
     z-index: 10;

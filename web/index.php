@@ -46,14 +46,17 @@ switch ($_SERVER["REQUEST_URI"]) {
         $exclude = Dict::post("posts", []);
         $status = round(Dict::post("status", 0));
         $delay = round(Dict::post("delay", 0));
+        $types = Dict::post("types", []);
 
         $query = "SELECT * FROM posts
                 WHERE status=?
+                    AND type IN ?
                     AND date<?
                 ORDER BY date, id
                 LIMIT 20";
         $params = [
             $status,
+            $types,
             time() - ($delay * 60),
         ];
         $result = Sql::query($query, $params);

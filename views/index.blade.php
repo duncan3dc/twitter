@@ -1,3 +1,5 @@
+@namespace(duncan3dc\Twitter)
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,9 +85,19 @@
                 <div class='module trends'>
                     <div class='flex-module trends-container'>
                         <div class='flex-module-inner'>
+
+                            <h4>Types: </h4>
+                            @foreach (App::getTypes() as $type)
+                                <input type='checkbox' class='types' value='{{ $type }}'>{{ $type }}<br>
+                            @endforeach
+
+                            <br><br>
+
                             <h4>Delay (minutes): </h4>
                             <input type='text' id='delay' value='0'>
+
                             <br><br>
+
                             <h4>Show Images: </h4>
                             <input type='checkbox' id='showImages'>
                         </div>

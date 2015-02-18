@@ -32,6 +32,12 @@ class Sql
     }
 
 
+    public static function cache($query, array $params = null, $time = null)
+    {
+        return static::init()->cache($query, $params, $time);
+    }
+
+
     public static function select($table, array $where)
     {
         return static::init()->select($table, $where);
