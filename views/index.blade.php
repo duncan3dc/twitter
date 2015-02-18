@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, user-scalable=yes'>
     <link rel='shortcut icon' href='/images/favicon.ico'>
 
     <link rel='stylesheet' type='text/css' href='/css/t1_core.css'>
