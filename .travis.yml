@@ -4,6 +4,8 @@ php:
   - 5.6
   - hhvm
 
+sudo: false
+
 script:
   - ./tests/lint.sh
 
