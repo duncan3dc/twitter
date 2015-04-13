@@ -108,6 +108,15 @@ class Post
                 $this->link = $this->data["link"];
                 $this->text = "<a href='" . $this->data["link"] . "'>" . $this->data["article"] . "</a><br><i>" . $this->data["comments"] . "</i>";
                 break;
+
+            case "sublime":
+                $this->hostname = "http://www.sublimetext.com/";
+                $this->username = "forum";
+                $this->fullname = $this->data["username"];
+                $this->avatar = "/images/sublime.png";
+                $this->link = $this->data["link"];
+                $this->text = $this->data["title"] . "<br><a href='{$this->link}'>VIew Thread</a>";
+                break;
         }
     }
 
