@@ -3,9 +3,8 @@
 namespace duncan3dc\Twitter;
 
 use duncan3dc\Helpers\Dict;
-use duncan3dc\Helpers\Helper;
-use duncan3dc\Helpers\Json;
 use duncan3dc\Laravel\Blade;
+use duncan3dc\Serial\Json;
 
 require(__DIR__ . "/../vendor/autoload.php");
 
@@ -13,7 +12,7 @@ switch ($_SERVER["REQUEST_URI"]) {
 
 
     case "/":
-        echo Blade::make("index");
+        echo Blade::render("index");
         break;
 
 
@@ -69,7 +68,7 @@ switch ($_SERVER["REQUEST_URI"]) {
             $post = new Post($row);
             $posts[] = [
                 "id"    =>  $row["id"],
-                "html"  =>  $post->make(),
+                "html"  =>  $post->render(),
             ];
         }
 

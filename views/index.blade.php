@@ -12,7 +12,7 @@
     <link rel='stylesheet' type='text/css' href='/css/stream.css'>
     <link rel='stylesheet' type='text/css' href='/css/greasemonkey.css'>
 
-    <script type='text/javascript' src='/js/jquery-2.1.1.js'></script>
+    <script type='text/javascript' src='/js/jquery-2.1.4.js'></script>
     <script type='text/javascript' src='/js/stream.js'></script>
 </head>
 <body>

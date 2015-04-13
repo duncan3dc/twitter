@@ -4,10 +4,9 @@ namespace duncan3dc\Twitter;
 
 use duncan3dc\DomParser\HtmlParser;
 use duncan3dc\Helpers\Env;
-use duncan3dc\Helpers\Helper;
 use duncan3dc\Helpers\Image;
-use duncan3dc\Helpers\Json;
 use duncan3dc\Laravel\Blade;
+use duncan3dc\Serial\Json;
 
 class Post
 {
@@ -121,12 +120,12 @@ class Post
     }
 
 
-    public function make()
+    public function render()
     {
-        return Blade::make("post", [
+        return Blade::render("post", [
             "post"  =>  $this,
             "data"  =>  $this->data,
-        ])->__toString();
+        ]);
     }
 
 

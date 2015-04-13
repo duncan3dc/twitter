@@ -15,12 +15,12 @@
                 </small>
                 <a class='account-group js-account-group js-action-profile js-user-profile-link js-nav' href='{{ $post->hostname . $post->username }}'>
                     <img class='avatar js-action-profile-avatar' src='{{ $post->avatar }}'>
-                    <strong class='fullname'>{{{ $post->fullname }}}</strong>
+                    <strong class='fullname'>{{ $post->fullname }}</strong>
                     <span class='username'>@{{{ $post->username }}}</span>
                 </a>
             </div>
             <p class='js-tweet-text'>
-                {{ preg_replace_callback("/  +/", function($match) { return str_replace(" ", "&nbsp;", $match[0]); }, $post->text) }}
+                {!! preg_replace_callback("/  +/", function($match) { return str_replace(" ", "&nbsp;", $match[0]); }, $post->text) !!}
             </p>
             <div class='stream-item-footer'>
                 <div class='context'>
@@ -28,10 +28,8 @@
                         @if ($post->retweet)
                             <span class='js-retweet-text'>
                                 Retweeted by
-                                {{{ $post->retweet["user"]["name"] }}}
-                                (<a class='pretty-link js-user-profile-link' href='{{ $post->hostname . $post->retweet["user"]["screen_name"] }}'>
-                                    @{{{ $post->retweet["user"]["screen_name"] }}}
-                                </a>)
+                                {{ $post->retweet["user"]["name"] }}
+                                (<a href='{{ $post->hostname . $post->retweet["user"]["screen_name"] }}'>@{{{ $post->retweet["user"]["screen_name"] }}}</a>)
                             </span>
                         @endif
                     </span>
