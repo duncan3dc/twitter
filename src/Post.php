@@ -105,7 +105,8 @@ class Post
                 $this->fullname = $this->data["author"];
                 $this->avatar = "/images/wikipedia.png";
                 $this->link = $this->data["link"];
-                $this->text = "<a href='" . $this->data["link"] . "'>" . $this->data["article"] . "</a><br><i>" . $this->data["comments"] . "</i>";
+                $this->text = "<a href='" . $this->data["link"] . "'>" . $this->data["article"] . "</a><br>";
+                $this->text .= "<i>" . htmlentities($this->data["comments"], \ENT_QUOTES) . "</i>";
                 break;
 
             case "sublime":
