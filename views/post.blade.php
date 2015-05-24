@@ -20,7 +20,7 @@
                 </a>
             </div>
             <p class='js-tweet-text'>
-                {!! preg_replace_callback("/  +/", function($match) { return str_replace(" ", "&nbsp;", $match[0]); }, $post->text) !!}
+                {!! preg_replace_callback("/  +/", function($match) { return str_replace(" ", "&nbsp;", $match[0]); }, $post->getHtml()) !!}
             </p>
             <div class='stream-item-footer'>
                 <div class='context'>

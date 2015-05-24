@@ -60,12 +60,14 @@ switch ($_SERVER["REQUEST_URI"]) {
         ];
         $result = Sql::query($query, $params);
 
+        $factory = new Factory;
+
         $posts = [];
         foreach ($result as $row) {
             if (in_array($row["id"], $exclude)) {
                 continue;
             }
-            $post = new Post($row);
+            $post = $factory->make($row);
             $posts[] = [
                 "id"    =>  $row["id"],
                 "html"  =>  $post->render(),
