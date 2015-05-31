@@ -203,11 +203,19 @@ class Post
             $splices[] = $splice;
         }
 
-        usort($splices, function($val1, $val2) {
-            if ($val1["start"] < $val2["start"]) {
+        uksort($splices, function($key1, $key2) use($splices) {
+            $pos1 = $splices[$key1]["start"];
+            $pos2 = $splices[$key2]["start"];
+            if ($pos1 < $pos2) {
                 return -1;
             }
-            if ($val1["start"] > $val2["start"]) {
+            if ($pos1 > $pos2) {
+                return 1;
+            }
+            if ($key1 < $key2) {
+                return -1;
+            }
+            if ($key1 > $key2) {
                 return 1;
             }
             return 0;
