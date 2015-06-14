@@ -43,7 +43,7 @@ switch ($_SERVER["REQUEST_URI"]) {
 
     case "/get-posts":
         $exclude = Dict::post("posts", []);
-        $status = round(Dict::post("status", 0));
+        $status = round(Dict::post("status", 1));
         $delay = round(Dict::post("delay", 0));
         $types = Dict::post("types", []);
 
