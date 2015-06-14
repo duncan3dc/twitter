@@ -186,18 +186,25 @@ class Post
                             "post"  =>  $this->post,
                             "image" =>  $image,
                         ]);
-                        file_put_contents($fullpath, $row["data"]);
+                        if ($row) {
+                            file_put_contents($fullpath, $row["data"]);
+                        }
                     }
-                    $splice["fullsize"] = Image::img([
-                        "path"      =>  $path,
-                        "basename"  =>  $image,
-                    ]);
-                    $splice["src"] = Image::img([
-                        "path"      =>  $path,
-                        "basename"  =>  $image,
-                        "width"     =>  500,
-                        "height"    =>  500,
-                    ]);
+                    if (file_exists($fullpath)) {
+                        $splice["fullsize"] = Image::img([
+                            "path"      =>  $path,
+                            "basename"  =>  $image,
+                        ]);
+                        $splice["src"] = Image::img([
+                            "path"      =>  $path,
+                            "basename"  =>  $image,
+                            "width"     =>  500,
+                            "height"    =>  500,
+                        ]);
+                    } else {
+                        $splice["fullsize"] = $media["media_url"];
+                        $splice["src"] = $media["media_url"];
+                    }
                 }
             }
             $splices[] = $splice;
