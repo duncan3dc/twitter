@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "86a92e8c8130d09f6d1a2c2337c87df7",
+    "hash": "652bfc6098117c498b6777bdb51f68c6",
     "packages": [
         {
             "name": "danielstjules/stringy",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b"
+                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
-                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
+                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-02-10 06:19:18"
+            "time": "2015-07-23 00:54:12"
         },
         {
             "name": "doctrine/inflector",
@@ -131,28 +131,33 @@
         },
         {
             "name": "duncan3dc/blade",
-            "version": "2.0.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/duncan3dc/blade.git",
-                "reference": "1365ac5c87f7631fb67f4f8049f2c7c60459f607"
+                "reference": "aa061af1c78854c4b5735b8d4f611781a5e6973d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/duncan3dc/blade/zipball/1365ac5c87f7631fb67f4f8049f2c7c60459f607",
-                "reference": "1365ac5c87f7631fb67f4f8049f2c7c60459f607",
+                "url": "https://api.github.com/repos/duncan3dc/blade/zipball/aa061af1c78854c4b5735b8d4f611781a5e6973d",
+                "reference": "aa061af1c78854c4b5735b8d4f611781a5e6973d",
                 "shasum": ""
             },
             "require": {
-                "duncan3dc/helpers": "~1.4",
-                "illuminate/events": "~5.0",
-                "illuminate/view": "~5.0",
-                "php": ">=5.4.0"
+                "duncan3dc/helpers": "^1.6",
+                "illuminate/events": "~5.1.0",
+                "illuminate/view": "~5.1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.7"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "duncan3dc\\Laravel\\": "src/"
+                    "duncan3dc\\Laravel\\": "src/",
+                    "duncan3dc\\LaravelTests\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -171,35 +176,40 @@
             "homepage": "https://github.com/duncan3dc/blade",
             "keywords": [
                 "laravel",
+                "template",
                 "templating",
                 "views"
             ],
-            "time": "2015-02-04 20:39:21"
+            "time": "2015-07-20 17:37:00"
         },
         {
             "name": "duncan3dc/domparser",
-            "version": "1.3.5",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/duncan3dc/domparser.git",
-                "reference": "6ff2409f1bdc6d5b493c0b7da92bc37643ee515c"
+                "reference": "30d212e4fc06ef808fbab12b8474e718d4152307"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/duncan3dc/domparser/zipball/6ff2409f1bdc6d5b493c0b7da92bc37643ee515c",
-                "reference": "6ff2409f1bdc6d5b493c0b7da92bc37643ee515c",
+                "url": "https://api.github.com/repos/duncan3dc/domparser/zipball/30d212e4fc06ef808fbab12b8474e718d4152307",
+                "reference": "30d212e4fc06ef808fbab12b8474e718d4152307",
                 "shasum": ""
             },
             "require": {
-                "duncan3dc/helpers": ">=1.0.6",
+                "ext-curl": "*",
                 "ext-dom": "*",
                 "ext-libxml": "*",
-                "php": ">=5.4.0"
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "duncan3dc\\DomParser\\": "src/"
+                    "duncan3dc\\DomParser\\": "src/",
+                    "duncan3dc\\DomParserTests\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -225,26 +235,27 @@
                 "writer",
                 "xml"
             ],
-            "time": "2015-03-17 12:03:53"
+            "time": "2015-09-09 19:17:14"
         },
         {
             "name": "duncan3dc/helpers",
-            "version": "1.6.1",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/duncan3dc/php-helpers.git",
-                "reference": "2779b8cb7564e612994d92be7bb5b9aa88ab518a"
+                "reference": "3cd2796ec38decdd2afc5f6944979517ef496057"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/duncan3dc/php-helpers/zipball/2779b8cb7564e612994d92be7bb5b9aa88ab518a",
-                "reference": "2779b8cb7564e612994d92be7bb5b9aa88ab518a",
+                "url": "https://api.github.com/repos/duncan3dc/php-helpers/zipball/3cd2796ec38decdd2afc5f6944979517ef496057",
+                "reference": "3cd2796ec38decdd2afc5f6944979517ef496057",
                 "shasum": ""
             },
             "require": {
                 "duncan3dc/serial": ">=0.3.0",
                 "ext-curl": "*",
                 "ext-date": "*",
+                "ext-exif": "*",
                 "ext-session": "*",
                 "php": ">=5.5.0"
             },
@@ -275,10 +286,11 @@
                 "debug",
                 "environment",
                 "files",
+                "filesystem",
                 "image",
                 "session"
             ],
-            "time": "2015-01-25 20:20:41"
+            "time": "2015-07-23 20:43:50"
         },
         {
             "name": "duncan3dc/serial",
@@ -332,16 +344,16 @@
         },
         {
             "name": "duncan3dc/sql-class",
-            "version": "1.6.9",
+            "version": "1.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/duncan3dc/sql-class.git",
-                "reference": "9563d220ef9fccdbaf516bc95c58245c412b0a16"
+                "reference": "5f9d09db799bc48e53a5da0bab894ca634a984fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/duncan3dc/sql-class/zipball/9563d220ef9fccdbaf516bc95c58245c412b0a16",
-                "reference": "9563d220ef9fccdbaf516bc95c58245c412b0a16",
+                "url": "https://api.github.com/repos/duncan3dc/sql-class/zipball/5f9d09db799bc48e53a5da0bab894ca634a984fe",
+                "reference": "5f9d09db799bc48e53a5da0bab894ca634a984fe",
                 "shasum": ""
             },
             "require": {
@@ -382,30 +394,30 @@
                 "sql",
                 "sqlite"
             ],
-            "time": "2015-03-21 13:10:17"
+            "time": "2015-06-06 10:47:04"
         },
         {
             "name": "illuminate/container",
-            "version": "v5.0.26",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "a11c01c1d8b6941bd7ef2f104749ada5e34f146e"
+                "reference": "66621248395705cc64bc1ce9262b99b4bfa606f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/a11c01c1d8b6941bd7ef2f104749ada5e34f146e",
-                "reference": "a11c01c1d8b6941bd7ef2f104749ada5e34f146e",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/66621248395705cc64bc1ce9262b99b4bfa606f2",
+                "reference": "66621248395705cc64bc1ce9262b99b4bfa606f2",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "5.0.*",
-                "php": ">=5.4.0"
+                "illuminate/contracts": "5.1.*",
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -425,29 +437,29 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "http://laravel.com",
-            "time": "2015-03-25 17:06:14"
+            "time": "2015-08-26 23:00:38"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.0.0",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "78f1dba092d5fcb6d3a19537662abe31c4d128fd"
+                "reference": "610aea16e3d91dfd85db4cf43703403a83b7cba2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/78f1dba092d5fcb6d3a19537662abe31c4d128fd",
-                "reference": "78f1dba092d5fcb6d3a19537662abe31c4d128fd",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/610aea16e3d91dfd85db4cf43703403a83b7cba2",
+                "reference": "610aea16e3d91dfd85db4cf43703403a83b7cba2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -466,32 +478,33 @@
                 }
             ],
             "description": "The Illuminate Contracts package.",
-            "time": "2015-01-30 16:27:08"
+            "homepage": "http://laravel.com",
+            "time": "2015-08-31 12:59:22"
         },
         {
             "name": "illuminate/events",
-            "version": "v5.0.26",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
-                "reference": "bf2f28157a5acba4df20980e8511850a6572f1f2"
+                "reference": "851c2351401145d81674991fe8491d560e620ec6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/bf2f28157a5acba4df20980e8511850a6572f1f2",
-                "reference": "bf2f28157a5acba4df20980e8511850a6572f1f2",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/851c2351401145d81674991fe8491d560e620ec6",
+                "reference": "851c2351401145d81674991fe8491d560e620ec6",
                 "shasum": ""
             },
             "require": {
-                "illuminate/container": "5.0.*",
-                "illuminate/contracts": "5.0.*",
-                "illuminate/support": "5.0.*",
-                "php": ">=5.4.0"
+                "illuminate/container": "5.1.*",
+                "illuminate/contracts": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -511,37 +524,37 @@
             ],
             "description": "The Illuminate Events package.",
             "homepage": "http://laravel.com",
-            "time": "2015-03-26 16:16:33"
+            "time": "2015-08-08 13:06:30"
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.0.26",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "9c2709f553ed025378d35fa4f4f8d9254304bf4f"
+                "reference": "b93043ad8efe4a2ccd0bb202d8493255bb865720"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/9c2709f553ed025378d35fa4f4f8d9254304bf4f",
-                "reference": "9c2709f553ed025378d35fa4f4f8d9254304bf4f",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/b93043ad8efe4a2ccd0bb202d8493255bb865720",
+                "reference": "b93043ad8efe4a2ccd0bb202d8493255bb865720",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "5.0.*",
-                "illuminate/support": "5.0.*",
-                "league/flysystem": "~1.0",
-                "php": ">=5.4.0",
-                "symfony/finder": "2.6.*"
+                "illuminate/contracts": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9",
+                "symfony/finder": "2.7.*"
             },
             "suggest": {
-                "league/flysystem-aws-s3-v2": "Required to use the Flysystem S3 driver (~1.0).",
+                "league/flysystem": "Required to use the Flysystem local and FTP drivers (~1.0).",
+                "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
                 "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0)."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -561,36 +574,37 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "http://laravel.com",
-            "time": "2015-03-26 10:19:03"
+            "time": "2015-08-24 08:44:48"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.0.26",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "29e8618a45d090572e092abf193a257bf28c48d9"
+                "reference": "c5389968d48517b3b51cfd8cd4abd72f0cc1575b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/29e8618a45d090572e092abf193a257bf28c48d9",
-                "reference": "29e8618a45d090572e092abf193a257bf28c48d9",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/c5389968d48517b3b51cfd8cd4abd72f0cc1575b",
+                "reference": "c5389968d48517b3b51cfd8cd4abd72f0cc1575b",
                 "shasum": ""
             },
             "require": {
                 "danielstjules/stringy": "~1.8",
                 "doctrine/inflector": "~1.0",
                 "ext-mbstring": "*",
-                "illuminate/contracts": "5.0.*",
-                "php": ">=5.4.0"
+                "illuminate/contracts": "5.1.*",
+                "php": ">=5.5.9"
             },
             "suggest": {
-                "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0)."
+                "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
+                "symfony/var-dumper": "Required to use the dd function (2.7.*)."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -613,33 +627,34 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2015-03-27 14:49:11"
+            "time": "2015-09-03 15:47:41"
         },
         {
             "name": "illuminate/view",
-            "version": "v5.0.26",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "c73ad1f7625d81bada64255a07cf2013cb02d6ab"
+                "reference": "82c5bc657554360a7325ace0761c24f26de9e771"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/c73ad1f7625d81bada64255a07cf2013cb02d6ab",
-                "reference": "c73ad1f7625d81bada64255a07cf2013cb02d6ab",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/82c5bc657554360a7325ace0761c24f26de9e771",
+                "reference": "82c5bc657554360a7325ace0761c24f26de9e771",
                 "shasum": ""
             },
             "require": {
-                "illuminate/container": "5.0.*",
-                "illuminate/contracts": "5.0.*",
-                "illuminate/filesystem": "5.0.*",
-                "illuminate/support": "5.0.*",
-                "php": ">=5.4.0"
+                "illuminate/container": "5.1.*",
+                "illuminate/contracts": "5.1.*",
+                "illuminate/events": "5.1.*",
+                "illuminate/filesystem": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -659,108 +674,24 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "http://laravel.com",
-            "time": "2015-03-26 17:28:59"
-        },
-        {
-            "name": "league/flysystem",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3c2400a99ccc3be6884d40361890010449c6b447"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3c2400a99ccc3be6884d40361890010449c6b447",
-                "reference": "3c2400a99ccc3be6884d40361890010449c6b447",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "ext-fileinfo": "*",
-                "league/phpunit-coverage-listener": "~1.1",
-                "mockery/mockery": "~0.9",
-                "phpspec/phpspec": "~2.0",
-                "phpspec/prophecy-phpunit": "~1.0",
-                "phpunit/phpunit": "~4.1",
-                "predis/predis": "~1.0",
-                "tedivm/stash": "~0.12.0"
-            },
-            "suggest": {
-                "ext-fileinfo": "Required for MimeType",
-                "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
-                "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
-                "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
-                "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
-                "league/flysystem-copy": "Allows you to use Copy.com storage",
-                "league/flysystem-dropbox": "Allows you to use Dropbox storage",
-                "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
-                "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
-                "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
-                "league/flysystem-webdav": "Allows you to use WebDAV storage",
-                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
-                "predis/predis": "Allows you to use Predis for caching"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\Flysystem\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Frank de Jonge",
-                    "email": "info@frenky.net"
-                }
-            ],
-            "description": "Many filesystems, one API.",
-            "keywords": [
-                "Cloud Files",
-                "WebDAV",
-                "aws",
-                "cloud",
-                "copy.com",
-                "dropbox",
-                "file systems",
-                "files",
-                "filesystem",
-                "ftp",
-                "rackspace",
-                "remote",
-                "s3",
-                "sftp",
-                "storage"
-            ],
-            "time": "2015-03-29 14:01:43"
+            "time": "2015-09-04 12:45:07"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.6.6",
-            "target-dir": "Symfony/Component/Finder",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "5dbe2e73a580618f5b4880fda93406eed25de251"
+                "reference": "fff4b0c362640a0ab7355e2647b3d461608e9065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/5dbe2e73a580618f5b4880fda93406eed25de251",
-                "reference": "5dbe2e73a580618f5b4880fda93406eed25de251",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/fff4b0c362640a0ab7355e2647b3d461608e9065",
+                "reference": "fff4b0c362640a0ab7355e2647b3d461608e9065",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.3.9"
             },
             "require-dev": {
                 "symfony/phpunit-bridge": "~2.7"
@@ -768,11 +699,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Finder\\": ""
                 }
             },
@@ -782,35 +713,34 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Finder Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "homepage": "https://symfony.com",
+            "time": "2015-08-26 17:56:37"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.6",
-            "target-dir": "Symfony/Component/Yaml",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4"
+                "reference": "2dc7b06c065df96cc686c66da2705e5e18aef661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/174f009ed36379a801109955fc5a71a49fe62dd4",
-                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/2dc7b06c065df96cc686c66da2705e5e18aef661",
+                "reference": "2dc7b06c065df96cc686c66da2705e5e18aef661",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.3.9"
             },
             "require-dev": {
                 "symfony/phpunit-bridge": "~2.7"
@@ -818,11 +748,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "Symfony\\Component\\Yaml\\": ""
                 }
             },
@@ -832,17 +762,17 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Yaml Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "homepage": "https://symfony.com",
+            "time": "2015-08-24 07:13:45"
         }
     ],
     "packages-dev": [],

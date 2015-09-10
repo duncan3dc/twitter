@@ -10,6 +10,5 @@
     },
     "autoload": {
         "psr-4": {"duncan3dc\\Twitter\\": "src/"}
-    },
-    "minimum-stability": "stable"
+    }
 }
