@@ -69,8 +69,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a class='js-nav' href='https://twitter.com/followers' data-element-term='follower_stats' data-nav='followers'>
-                                    <strong id='userdata_followers'>0</strong> Followers
+                                <a class='js-nav'>
+                                    <strong id='savedCounter'>0</strong> Saved
                                 </a>
                             </li>
                             <li>

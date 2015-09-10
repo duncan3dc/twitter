@@ -32,6 +32,7 @@ var twitter = {
         } else {
             $.get("/getUnreadCount",function(json) {
                 var data = JSON.parse(json)
+                $("#savedCounter").html(data.saved)
                 $("#unreadCounter").html(data.unread)
             })
             twitter.timeout = setTimeout(twitter.checkPosts,10 * 1000)
@@ -76,6 +77,7 @@ var twitter = {
                         $("#loadingPosts").before(post)
                         post.twitterPost()
                     }
+                    $("#savedCounter").html(data.saved)
                     $("#unreadCounter").html(data.unread)
                     twitter.updatePostCount()
                 }
@@ -124,6 +126,7 @@ jQuery.fn.twitterPost = function() {
             data        :   {post : post, status : status},
             dataType    :   "json",
             success     :   function(data) {
+                $("#savedCounter").html(data.saved)
                 $("#unreadCounter").html(data.unread)
             }
         })
@@ -172,6 +175,7 @@ $(document).ready(function() {
             },
             dataType    :   "json",
             success     :   function(data) {
+                $("#savedCounter").html(data.saved)
                 $("#unreadCounter").html(data.unread)
             }
         })

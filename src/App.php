@@ -8,7 +8,14 @@ class App
     public static function getUnreadCount()
     {
         $query = "SELECT COUNT(*) FROM posts
-                WHERE status=1";
+                WHERE status = 1";
+        return round(Sql::query($query)->fetch(Sql::FETCH_ROW)[0]);
+    }
+
+    public static function getSavedCount()
+    {
+        $query = "SELECT COUNT(*) FROM posts
+                WHERE status = 2";
         return round(Sql::query($query)->fetch(Sql::FETCH_ROW)[0]);
     }
 

@@ -37,6 +37,7 @@ switch ($_SERVER["REQUEST_URI"]) {
         echo Json::encode([
             "status"    =>  1,
             "unread"    =>  App::getUnreadCount(),
+            "saved"     =>  App::getSavedCount(),
         ]);
         break;
 
@@ -78,6 +79,7 @@ switch ($_SERVER["REQUEST_URI"]) {
             "status"    =>  1,
             "posts"     =>  $posts,
             "unread"    =>  App::getUnreadCount(),
+            "saved"     =>  App::getSavedCount(),
         ]);
         break;
 
@@ -92,6 +94,7 @@ switch ($_SERVER["REQUEST_URI"]) {
         echo Json::encode([
             "status"    =>  1,
             "unread"    =>  App::getUnreadCount(),
+            "saved"     =>  App::getSavedCount(),
         ]);
         break;
 
