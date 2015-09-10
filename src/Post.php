@@ -50,6 +50,15 @@ class Post
                 $this->text = '"<i>' . $this->data["question"] . '</i>"<br>' . $this->data["answer"];
                 break;
 
+            case "google":
+                $this->hostname = "https://groups.google.com/";
+                $this->username = str_replace(" ", "", $this->data["author"]);
+                $this->fullname = $this->data["author"];
+                $this->avatar = "/images/google.png";
+                $this->link = $this->data["link"];
+                $this->text = "<b><a href='{$this->link}'>" . $this->data["title"] . "</a></b><br><i>" . $this->data["content"] . "&hellip;</i>";
+                break;
+
             case "instagram":
                 $this->hostname = "http://instagram.com/";
                 $this->username = $this->data["user"]["username"];
