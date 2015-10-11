@@ -4,7 +4,7 @@ namespace duncan3dc\Twitter\Posts;
 
 class Wikipedia extends AbstractPost
 {
-    public $hostname = "http://en.wikipedia.org/wiki/Special:Contributions";
+    public $hostname = "http://en.wikipedia.org/wiki";
     public $avatar = "/images/wikipedia.png";
 
     public function __construct(array $row)
@@ -21,5 +21,10 @@ class Wikipedia extends AbstractPost
         $html = "<a href='" . $this->data["link"] . "'>" . $this->data["article"] . "</a><br>";
         $html .= "<i>" . htmlentities($this->data["comments"], \ENT_QUOTES) . "</i>";
         return $html;
+    }
+
+    public function getUserLink($user)
+    {
+        return "{$this->hostname}/Special:Contributions/{$user}";
     }
 }

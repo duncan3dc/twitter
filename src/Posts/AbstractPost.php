@@ -43,5 +43,11 @@ abstract class AbstractPost
     }
 
 
+    public function getUserLink($user)
+    {
+        return "{$this->hostname}/{$user}";
+    }
+
+
     abstract public function getHtml();
 }

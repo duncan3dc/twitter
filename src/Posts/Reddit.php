@@ -23,4 +23,9 @@ class Reddit extends AbstractPost
     {
         return $this->data["title"] . "<br><a href='" . $this->link . "'>" . $this->link . "</a>";
     }
+
+    public function getUserLink($user)
+    {
+        return "{$this->hostname}/user/{$user}";
+    }
 }

@@ -13,7 +13,7 @@
                         {{ date("d/m/y H:i:s", $post->date) }}
                     </a>
                 </small>
-                <a class='account-group js-account-group js-action-profile js-user-profile-link js-nav' href='{{ $post->hostname . "/" . $post->username }}'>
+                <a class='account-group js-account-group js-action-profile js-user-profile-link js-nav' href='{{ $post->getUserLink($post->username) }}'>
                     <img class='avatar js-action-profile-avatar' src='{{ $post->avatar }}'>
                     <strong class='fullname'>{{ $post->fullname }}</strong>
                     <span class='username'>&commat;{{ $post->username }}</span>
@@ -28,7 +28,7 @@
                         @if ($post->retweet)
                             <span class='js-retweet-text'>
                                 Retweeted by
-                                {{ $post->retweet["user"]["name"] }}
+                                {{ $post->getUserLink($post->retweet["user"]["name"]) }}
                                 (<a href='{{ $post->hostname . "/" . $post->retweet["user"]["screen_name"] }}'>&commat;{{ $post->retweet["user"]["screen_name"] }}</a>)
                             </span>
                         @endif
