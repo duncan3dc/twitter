@@ -6,7 +6,7 @@ use duncan3dc\DomParser\HtmlParser;
 
 class Php extends AbstractPost
 {
-    public $hostname = "http://news.php.net/";
+    public $hostname = "http://news.php.net";
     public $avatar = "/images/php.png";
 
     public function __construct(array $row)

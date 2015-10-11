@@ -4,7 +4,7 @@ namespace duncan3dc\Twitter\Posts;
 
 class Sublime extends AbstractPost
 {
-    public $hostname = "http://www.sublimetext.com/";
+    public $hostname = "http://www.sublimetext.com";
     public $avatar = "/images/sublime.png";
     public $username = "forum";
 

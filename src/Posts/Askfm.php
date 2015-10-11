@@ -4,7 +4,7 @@ namespace duncan3dc\Twitter\Posts;
 
 class Askfm extends AbstractPost
 {
-    public $hostname = "http://ask.fm/";
+    public $hostname = "http://ask.fm";
 
     public function __construct(array $row)
     {

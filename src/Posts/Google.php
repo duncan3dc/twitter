@@ -4,7 +4,7 @@ namespace duncan3dc\Twitter\Posts;
 
 class Google extends AbstractPost
 {
-    public $hostname = "https://groups.google.com/";
+    public $hostname = "https://groups.google.com";
     public $avatar = "/images/google.png";
 
     public function __construct(array $row)

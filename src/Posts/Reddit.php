@@ -4,7 +4,7 @@ namespace duncan3dc\Twitter\Posts;
 
 class Reddit extends AbstractPost
 {
-    public $hostname = "http://reddit.com/";
+    public $hostname = "http://reddit.com";
     public $avatar = "/images/reddit.png";
 
     public function __construct(array $row)
@@ -13,7 +13,7 @@ class Reddit extends AbstractPost
 
         $this->username = $this->data["author"];
         $this->fullname = $this->data["author"];
-        $this->link = $this->hostname . $this->data["permalink"];
+        $this->link = $this->hostname . "/" . $this->data["permalink"];
         if (!in_array($this->data["thumbnail"], ["", "self", "default"], true)) {
             $this->avatar = $this->data["thumbnail"];
         }

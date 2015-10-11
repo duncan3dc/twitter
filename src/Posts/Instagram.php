@@ -4,7 +4,7 @@ namespace duncan3dc\Twitter\Posts;
 
 class Instagram extends AbstractPost
 {
-    public $hostname = "http://instagram.com/";
+    public $hostname = "http://instagram.com";
 
     public function __construct(array $row)
     {

@@ -8,7 +8,7 @@ use duncan3dc\Twitter\Sql;
 
 class Twitter extends AbstractPost
 {
-    public $hostname = "https://twitter.com/";
+    public $hostname = "https://twitter.com";
 
     public function __construct(array $row)
     {
@@ -22,7 +22,7 @@ class Twitter extends AbstractPost
         $this->username = $this->data["user"]["screen_name"];
         $this->fullname = $this->data["user"]["name"];
         $this->avatar = $this->data["user"]["profile_image_url"];
-        $this->link = "{$this->hostname}{$this->username}/status/{$this->post}";
+        $this->link = "{$this->hostname}/{$this->username}/status/{$this->post}";
     }
 
 
@@ -136,11 +136,11 @@ class Twitter extends AbstractPost
 
                 case "hashtag";
                     $hashtag = "#" . $val["text"];
-                    $new = "<a href='" . $this->hostname . "search?q=" . urlencode($hashtag) . "'>" . $hashtag . "</a>";
+                    $new = "<a href='" . $this->hostname . "/search?q=" . urlencode($hashtag) . "'>" . $hashtag . "</a>";
                     break;
 
                 case "mention":
-                    $new = "<a href='" . $this->hostname . $val["text"] . "'>@" . $val["text"] . "</a>";
+                    $new = "<a href='" . $this->hostname . "/" . $val["text"] . "'>@" . $val["text"] . "</a>";
                     break;
 
                 case "link":
