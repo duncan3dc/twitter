@@ -14,12 +14,18 @@ class Php extends AbstractPost
         parent::__construct($row);
 
         $a = (new HtmlParser($this->data["description"]))->getTag("a");
-        $email = $a->getAttribute("href");
-        $email = str_replace("mailto:", "", $email);
-        $email = str_replace("+dot+", ".", $email);
-        $email = str_replace("+at+", "@", $email);
-        $this->username = $email;
-        $this->fullname = $a->nodeValue;
+        if ($a) {
+            $email = $a->getAttribute("href");
+            $email = str_replace("mailto:", "", $email);
+            $email = str_replace("+dot+", ".", $email);
+            $email = str_replace("+at+", "@", $email);
+            $this->username = $email;
+            $this->fullname = $a->nodeValue;
+        } else {
+            $this->username = $this->data["description"];
+            $this->fullname = $this->data["description"];
+        }
+
         $this->link = $this->data["link"];
     }
 
