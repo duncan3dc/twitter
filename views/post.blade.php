@@ -1,8 +1,8 @@
 <div id='postContainer_{{ $post->id }}' data-post='{{ $post->id }}' class='postContainer js-stream-item stream-item stream-item expanding-stream-item'>
     <div class='tweet original-tweet js-stream-tweet'>
         <div class='content'>
-            <img class='actionPost' data-post='{{ $post->id }}' data-status='0' src='/images/x.gif'>
-            <img class='actionPost' data-post='{{ $post->id }}' data-status='2' src='/images/save.png'>
+            <i class='actionPost fa fa-trash-o' data-post='{{ $post->id }}' data-status='0'></i>
+            <i class='actionPost fa fa-floppy-o' data-post='{{ $post->id }}' data-status='2'></i>
             <div class='stream-item-header'>
                 <small class='time'>
                     @if ($post->retweet)

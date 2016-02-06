@@ -7,6 +7,7 @@
     <meta name='viewport' content='width=device-width, user-scalable=yes'>
     <link rel='shortcut icon' href='/images/favicon.ico'>
 
+    <link rel='stylesheet' type='text/css' href='/css/font-awesome.css'>
     <link rel='stylesheet' type='text/css' href='/css/t1_core.css'>
     <link rel='stylesheet' type='text/css' href='/css/user-style-duncan3dc.css'>
     <link rel='stylesheet' type='text/css' href='/css/stream.css'>
@@ -118,7 +119,7 @@
             <div class='content-main js-timeline-from-cache' id='timeline'>
                 <div class='content-header'>
                     <div class='header-inner'>
-                        <img id='undo' src='/images/undo.png' title='Undo'>
+                        <i id='undo' class='fa fa-undo' title='Undo'></i>
                         <h2 class='js-timeline-title'>Tweets</h2>
                     </div>
                 </div>
@@ -126,7 +127,7 @@
                     <div class='stream home-stream'>
                         <div class='stream-items' id='stream-items-id'>
                             <div id='loadingPosts'>
-                                <img src='/images/loadingPosts.gif' alt='Loading Tweets...'>
+                                <i class='fa fa-spinner fa-spin' alt='Loading Tweets...'></i>
                                 <div id='loadingPostsLabel'>Loading Tweets...</div>
                             </div>
                             <div id='streamTail'></div>

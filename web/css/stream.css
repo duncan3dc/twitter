@@ -22,8 +22,8 @@ input.types {
 div.stream-item-header {
     z-index: 10;
 }
-img.actionPost {
-    width: 14px;
+.actionPost {
+    font-size: 20px;
     float: right;
     z-index: 20;
     margin-left: 10px;
@@ -53,11 +53,19 @@ img.postImage, video {
 .setStatus {
     cursor: pointer;
 }
-img#undo {
-    float: right;
-    height: 24px;
+.header-inner {
+    position: relative;
+}
+#undo {
+    position: absolute;
+    top: 5px;
+    right: 9px;
+    font-size: 34px;
     cursor: pointer;
     display: none;
+}
+.fa-spinner {
+    font-size: 50px;
 }
 #streamTail {
     height: 10px;
@@ -87,10 +95,14 @@ img#undo {
     div.tweet {
         min-height: 70px;
     }
-    img.actionPost {
-        width: 50px;
+    .actionPost {
+        font-size: 60px;
+        margin-left: 14px;
     }
     img.postImage {
         width: 100%;
+    }
+    .time a {
+        font-size: 15px;
     }
 }

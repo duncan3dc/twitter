@@ -104,8 +104,8 @@ var twitter = {
 
 jQuery.fn.twitterPost = function() {
 
-    $("img.actionPost",this).click(function(e) {
-        $("img.actionPost",$(this).parent()).removeClass("active")
+    $(".actionPost",this).click(function(e) {
+        $(".actionPost",$(this).parent()).removeClass("active")
         var post = $(this).attr("data-post")
         var status = $(this).attr("data-status")
 
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
     $(document).keypress(function(event) {
         if(event.keyCode == 46) {
-            $("img.actionPost.active").first().click()
+            $(".actionPost.active").first().click()
         }
     })
 
