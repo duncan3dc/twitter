@@ -7,7 +7,16 @@ php:
 
 sudo: false
 
+env:
+  - COMPOSER_OPTS=""
+  - COMPOSER_OPTS="--prefer-lowest"
+
+install:
+  - composer self-update
+  - composer update $COMPOSER_OPTS
+
 script:
+  - ./vendor/bin/phpunit
   - ./tests/lint.sh
 
 git:
