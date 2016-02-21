@@ -18,6 +18,6 @@ class Sublime extends AbstractPost
 
     public function getHtml()
     {
-        return $this->data["title"] . "<br><a href='{$this->link}'>View Thread</a>";
+        return htmlentities($this->data["title"], \ENT_QUOTES) . "<br><a href='{$this->link}'>View Thread</a>";
     }
 }
