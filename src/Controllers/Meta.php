@@ -4,11 +4,13 @@ namespace duncan3dc\Twitter\Controllers;
 
 use duncan3dc\Twitter\App;
 use duncan3dc\Twitter\Sql;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class Meta
 {
 
-    public function getUserData()
+    public function getUserData(ServerRequestInterface $request, ResponseInterface $response)
     {
         $data = [];
 
@@ -26,7 +28,7 @@ class Meta
     }
 
 
-    public function getUnreadCount()
+    public function getUnreadCount(ServerRequestInterface $request, ResponseInterface $response)
     {
         return [
             "status"    =>  1,
@@ -36,7 +38,7 @@ class Meta
     }
 
 
-    public function getHashtags()
+    public function getHashtags(ServerRequestInterface $request, ResponseInterface $response)
     {
         $hashtags = [];
 

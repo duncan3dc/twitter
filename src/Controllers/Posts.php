@@ -6,11 +6,13 @@ use duncan3dc\Helpers\Dict;
 use duncan3dc\Twitter\App;
 use duncan3dc\Twitter\Factory;
 use duncan3dc\Twitter\Sql;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class Posts
 {
 
-    public function getPosts()
+    public function getPosts(ServerRequestInterface $request, ResponseInterface $response)
     {
         $exclude = Dict::post("posts", []);
         $status = round(Dict::post("status", 1));
@@ -53,7 +55,7 @@ class Posts
     }
 
 
-    public function updatePost()
+    public function updatePost(ServerRequestInterface $request, ResponseInterface $response)
     {
         Sql::update("posts", [
             "status"    =>  Dict::post("status"),

@@ -2,6 +2,9 @@
 
 namespace duncan3dc\Twitter;
 
+use duncan3dc\Twitter\Controllers\Index;
+use duncan3dc\Twitter\Controllers\Meta;
+use duncan3dc\Twitter\Controllers\Posts;
 use League\Container\Container;
 use League\Route\RouteCollection;
 use Zend\Diactoros\Response;
@@ -17,6 +20,7 @@ class Router
     {
         $this->setupContainer();
         $this->setupRouter();
+        $this->setupRoutes();
     }
 
 
@@ -34,6 +38,29 @@ class Router
     public function setupRouter()
     {
         $this->routes = new RouteCollection($this->container);
+
+        $this->routes->setStrategy(new Dispatcher);
+    }
+
+
+    public function setupRoutes()
+    {
+        $this->addRoute("/", [new Index, "home"]);
+
+        $posts = new Posts;
+        $this->addRoute("/get-posts", [$posts, "getPosts"]);
+        $this->addRoute("/update-post", [$posts, "updatePost"]);
+
+        $meta = new Meta;
+        $this->addRoute("/get-user-data", [$meta, "getUserData"]);
+        $this->addRoute("/get-unread-count", [$meta, "getUnreadCount"]);
+        $this->addRoute("/get-hashtags", [$meta, "getHashtags"]);
+    }
+
+
+    protected function addRoute($path, callable $controller)
+    {
+        $this->routes->map(["GET", "POST"], $path, $controller);
     }
 
 

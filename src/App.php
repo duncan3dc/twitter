@@ -2,8 +2,21 @@
 
 namespace duncan3dc\Twitter;
 
+use Zend\Diactoros\Response\SapiEmitter;
+
 class App
 {
+
+    public function run()
+    {
+        $router = new Router;
+
+        $response = $router->dispatch();
+
+        $emitter = new SapiEmitter;
+        $emitter->emit($response);
+    }
+
 
     public static function getUnreadCount()
     {
