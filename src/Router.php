@@ -46,6 +46,7 @@ class Router
     public function setupRoutes()
     {
         $this->addRoute("/", [new Index, "home"]);
+        $this->addRoute("/logout", [new Index, "logout"]);
 
         $posts = new Posts;
         $this->addRoute("/get-posts", [$posts, "getPosts"]);

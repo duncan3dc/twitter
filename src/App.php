@@ -2,6 +2,9 @@
 
 namespace duncan3dc\Twitter;
 
+use duncan3dc\Laravel\Blade;
+use duncan3dc\Sessions\Session;
+use Zend\Diactoros\Response;
 use Zend\Diactoros\Response\SapiEmitter;
 
 class App
@@ -9,9 +12,15 @@ class App
 
     public function run()
     {
-        $router = new Router;
+        Session::name("twitter");
 
-        $response = $router->dispatch();
+        if (User::isLoggedIn()) {
+            $router = new Router;
+            $response = $router->dispatch();
+        } else {
+            $response = new Response;
+            $response->getBody()->write(Blade::render("login"));
+        }
 
         $emitter = new SapiEmitter;
         $emitter->emit($response);

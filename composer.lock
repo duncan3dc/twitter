@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "74fb13fe17e83ba822b0b691f11d2a11",
-    "content-hash": "80c7e998e7fe6a9bf19ce7b72981632f",
+    "hash": "cb9988d85bb287d4535f42b440ebc6af",
+    "content-hash": "1635360a60394a3606607b438c74ead3",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -313,6 +313,55 @@
                 "yaml"
             ],
             "time": "2015-02-07 20:08:02"
+        },
+        {
+            "name": "duncan3dc/sessions",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/duncan3dc/sessions.git",
+                "reference": "134c7c59010e0d0876681d7ff6b12dbf5b54e4c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/duncan3dc/sessions/zipball/134c7c59010e0d0876681d7ff6b12dbf5b54e4c0",
+                "reference": "134c7c59010e0d0876681d7ff6b12dbf5b54e4c0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-session": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "duncan3dc\\Sessions\\": "src/",
+                    "duncan3dc\\SessionsTest\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Duncan",
+                    "email": "git@duncanc.co.uk",
+                    "homepage": "https://github.com/duncan3dc",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A non-blocking session manager",
+            "homepage": "https://github.com/duncan3dc/sessions",
+            "keywords": [
+                "non-blocking",
+                "session"
+            ],
+            "time": "2015-07-19 19:18:06"
         },
         {
             "name": "duncan3dc/sql-class",
