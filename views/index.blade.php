@@ -1,5 +1,7 @@
 @namespace(duncan3dc\Twitter)
 
+@use(duncan3dc\Helpers\Env)
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,9 @@
                     <ul class='nav js-global-actions' id='global-actions'>
                         <li class='home'><a class='js-hover js-nav setStatus' data-status='1'>Home</a></li>
                         <li class='home'><a class='js-hover js-nav setStatus' data-status='2'>Saved</a></li>
-                        <li class='home'><a class='js-hover js-nav' href='/logout'>Logout</a></li>
+                        @if (!Env::getVar("auto-login"))
+                            <li class='home'><a class='js-hover js-nav' href='/logout'>Logout</a></li>
+                        @endif
                     </ul>
                     <div class='pull-right'>
                         <form class='form-search' action='https://twitter.com/search' method='get'>

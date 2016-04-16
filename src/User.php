@@ -10,6 +10,10 @@ class User
 
     public static function isLoggedIn()
     {
+        if (Env::getVar("auto-login")) {
+            return true;
+        }
+
         static::checkLogin();
 
         $user = Session::get("user");
