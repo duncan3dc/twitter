@@ -2,6 +2,7 @@
 
 namespace duncan3dc\Twitter;
 
+use duncan3dc\Helpers\Env;
 use duncan3dc\Laravel\Blade;
 use duncan3dc\Sessions\Session;
 use Zend\Diactoros\Response;
@@ -12,8 +13,49 @@ class App
 
     public function run()
     {
-        Session::name("twitter");
+        if (Env::getVar("show-errors")) {
+            ob_start();
+            $whoops = new \Whoops\Run;
 
+            $htmlHandler = new \Whoops\Handler\PrettyPageHandler;
+            $htmlHandler->setEditor("sublime");
+            $whoops->pushHandler($htmlHandler);
+
+            if (\Whoops\Util\Misc::isAjaxRequest()) {
+                $whoops->pushHandler(new \Whoops\Handler\JsonResponseHandler);
+            }
+
+            $whoops->register();
+        }
+
+        try {
+            $this->bootstrap();
+            $this->handleRequest();
+        } catch (\Throwable $e) {
+            if (Env::getVar("show-errors")) {
+                throw $e;
+            }
+
+            $error = $e->getMessage();
+            try {
+                echo Blade::render("error", [
+                    "error" =>  $error,
+                ]);
+            } catch (\Throwable $e) {
+                echo $error;
+            }
+        }
+    }
+
+
+    private function bootstrap()
+    {
+        Session::name("twitter");
+    }
+
+
+    private function handleRequest()
+    {
         if (User::isLoggedIn()) {
             $router = new Router;
             $response = $router->dispatch();

@@ -67,6 +67,12 @@ img.postImage, video {
 .fa-spinner {
     font-size: 50px;
 }
+.error {
+    padding: 4px;
+    font-weight: bold;
+    color: #ff0000;
+    white-space: pre;
+}
 #streamTail {
     height: 10px;
     background-color: #ffffff;
