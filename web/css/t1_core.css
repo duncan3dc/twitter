@@ -435,46 +435,6 @@ b {
 .stream-item-header .account-group {
     color: #999;
 }
-.tweet {
-    position: relative;
-    min-height: 51px;
-    padding: 9px 12px;
-    border-bottom: 1px solid #e8e8e8;
-}
-.tweet {
-    cursor: default;
-    ;
-}
-.tweet p {
-    word-wrap: break-word;
-}
-.tweet .context a {
-    color: #999;
-}
-.tweet .stream-item-footer {
-    font-size: 12px;
-    padding-top: 1px;
-}
-.tweet .time {
-    position: absolute;
-    bottom: 2px;
-    right: 6px;
-    color: #bbb;
-}
-.tweet .context .pretty-link s, .tweet .context .pretty-link b {
-    color: #999;
-}
-.tweet .metadata {
-    overflow: hidden;
-}
-.tweet .stats {
-    margin-top: 10px;
-    border-bottom: 1px solid #e8e8e8;
-    border-bottom: 1px solid rgba(0,0,0,.1);
-}
-.tweet .stats a {
-    width: auto;
-}
 #stream-items-id {
     zoom: 1;
 }

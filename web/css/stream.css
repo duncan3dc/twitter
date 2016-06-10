@@ -81,6 +81,48 @@ img.postImage, video {
     border-radius: 0px 0px 6px 6px;
 }
 
+div.tweet {
+    position: relative;
+    min-height: 51px;
+    padding: 9px 12px;
+    border-bottom: 1px solid #e8e8e8;
+}
+div.tweet p {
+    word-wrap: break-word;
+}
+div.tweet .context a {
+    color: #999999;
+}
+div.tweet .stream-item-footer {
+    font-size: 12px;
+    padding-top: 1px;
+}
+div.tweet .time {
+    position: absolute;
+    bottom: 2px;
+    right: 6px;
+    color: #bbbbbb;
+}
+div.quoted-tweet {
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    padding: 0px;
+    margin: 10px;
+    min-height: 56px;
+}
+div.quoted-tweet div.stream-item-header .avatar {
+    top: 4px;
+    left: 4px;
+}
+div.quoted-tweet .time {
+    top: 0px;
+}
+div.quoted-tweet img.postImage, div.quoted-tweet video {
+    max-width: 450px;
+}
+
+
+
 @media screen and (max-width: 960px) {
     div#page-container {
         width: 622px;

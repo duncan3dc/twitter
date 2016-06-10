@@ -13,14 +13,36 @@
                         {{ date("d/m/y H:i:s", $post->date) }}
                     </a>
                 </small>
-                <a class='account-group js-account-group js-action-profile js-user-profile-link js-nav' href='{{ $post->getUserLink($post->username) }}'>
-                    <img class='avatar js-action-profile-avatar' src='{{ $post->avatar }}'>
+                <a href='{{ $post->getUserLink($post->username) }}'>
+                    <img class='avatar' src='{{ $post->avatar }}'>
                     <strong class='fullname'>{{ $post->fullname }}</strong>
                     <span class='username'>&commat;{{ $post->username }}</span>
                 </a>
             </div>
             <p class='js-tweet-text'>
-                {!! preg_replace_callback("/  +/", function($match) { return str_replace(" ", "&nbsp;", $match[0]); }, $post->getHtml()) !!}
+                {!! $post->safespace($post->getHtml()) !!}
+
+                @if ($post->quoted)
+                    <div class='tweet quoted-tweet'>
+                        <div class='content'>
+                            <div class='stream-item-header'>
+                                <small class='time'>
+                                    <a href='{{ $post->hostname . $post->quoted["user"]["screen_name"] . "/status/" . $post->quoted["id_str"] }}'>
+                                        {{ date("d/m/y H:i:s", strtotime($post->quoted["created_at"])) }}
+                                    </a>
+                                </small>
+                                <a href='{{ $post->hostname . $post->quoted["user"]["screen_name"] }}'>
+                                    <img class='avatar' src='{{ $post->quoted["user"]["profile_image_url"] }}'>
+                                    <strong class='fullname'>{{ $post->quoted["user"]["name"] }}</strong>
+                                    <span class='username'>&commat;{{ $post->quoted["user"]["screen_name"] }}</span>
+                                </a>
+                            </div>
+                            <p class='js-tweet-text'>
+                                {!! $post->safespace($post->getQuotedHtml()) !!}
+                            </p>
+                        </div>
+                    </div>
+                @endif
             </p>
             <div class='stream-item-footer'>
                 <div class='context'>

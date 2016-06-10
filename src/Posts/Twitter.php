@@ -18,6 +18,9 @@ class Twitter extends AbstractPost
             $this->retweet = $this->data;
             $this->data = $this->data["retweeted_status"];
         }
+        if (isset($this->data["quoted_status"])) {
+            $this->quoted = $this->data["quoted_status"];
+        }
 
         $this->username = $this->data["user"]["screen_name"];
         $this->fullname = $this->data["user"]["name"];
@@ -26,11 +29,11 @@ class Twitter extends AbstractPost
     }
 
 
-    public function getHtml()
+    private function convertEntities(array $data)
     {
         $splices = [];
 
-        foreach ($this->data["entities"]["hashtags"] as $hashtag) {
+        foreach ($data["entities"]["hashtags"] as $hashtag) {
             $splices[] = [
                 "type"  =>  "hashtag",
                 "start" =>  $hashtag["indices"][0],
@@ -39,7 +42,7 @@ class Twitter extends AbstractPost
             ];
         }
 
-        foreach ($this->data["entities"]["user_mentions"] as $mention) {
+        foreach ($data["entities"]["user_mentions"] as $mention) {
             $splices[] = [
                 "type"  =>  "mention",
                 "start" =>  $mention["indices"][0],
@@ -48,7 +51,22 @@ class Twitter extends AbstractPost
             ];
         }
 
-        foreach ($this->data["entities"]["urls"] as $url) {
+        foreach ($data["entities"]["urls"] as $url) {
+
+            # If this is a quoted tweet then remove the link to the quoted tweet
+            if ($this->quoted) {
+                $id = $this->quoted["id_str"];
+                if (substr($url["expanded_url"], (strlen($id) * -1) - 1) === "/{$id}") {
+                    $splices[] = [
+                        "type"  =>  "hidden",
+                        "start" =>  $url["indices"][0],
+                        "end"   =>  $url["indices"][1],
+                        "text"  =>  "",
+                    ];
+                    continue;
+                }
+            }
+
             $splice = [
                 "type"  =>  "link",
                 "start" =>  $url["indices"][0],
@@ -66,7 +84,7 @@ class Twitter extends AbstractPost
             $splices[] = $splice;
         }
 
-        $medias = isset($this->data["entities"]["media"]) ? $this->data["entities"]["media"] : [];
+        $medias = isset($data["entities"]["media"]) ? $data["entities"]["media"] : [];
         foreach ($medias as $media) {
             $splice = [
                 "type"  =>  "link",
@@ -127,7 +145,7 @@ class Twitter extends AbstractPost
             return 0;
         });
 
-        $text = $this->data["text"];
+        $text = $data["text"];
         $append = "";
         $adjust = 0;
         foreach ($splices as $val) {
@@ -183,5 +201,17 @@ class Twitter extends AbstractPost
         $text .= $append;
 
         return nl2br($text);
+    }
+
+
+    public function getHtml()
+    {
+        return $this->convertEntities($this->data);
+    }
+
+
+    public function getQuotedHtml()
+    {
+        return $this->convertEntities($this->quoted);
     }
 }

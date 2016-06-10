@@ -10,6 +10,7 @@ abstract class AbstractPost
     public $id;
     public $date;
     public $retweet;
+    public $quoted;
 
     protected $post;
     protected $type;
@@ -26,7 +27,6 @@ abstract class AbstractPost
     {
         $this->id = $row["id"];
         $this->date = $row["date"];
-        $this->retweet = false;
 
         $this->post = $row["post"];
         $this->type = $row["type"];
@@ -46,6 +46,16 @@ abstract class AbstractPost
     public function getUserLink($user)
     {
         return "{$this->hostname}/{$user}";
+    }
+
+
+    public function safespace($content)
+    {
+        $content = preg_replace_callback("/  +/", function ($match) {
+            return str_replace(" ", "&nbsp;", $match[0]);
+        }, $content);
+
+        return $content;
     }
 
 
