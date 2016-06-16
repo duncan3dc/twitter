@@ -27,11 +27,11 @@
                         <div class='content'>
                             <div class='stream-item-header'>
                                 <small class='time'>
-                                    <a href='{{ $post->hostname . $post->quoted["user"]["screen_name"] . "/status/" . $post->quoted["id_str"] }}'>
+                                    <a href='{{ $post->hostname }}/{{ $post->quoted["user"]["screen_name"] }}/status/{{ $post->quoted["id_str"] }}'>
                                         {{ date("d/m/y H:i:s", strtotime($post->quoted["created_at"])) }}
                                     </a>
                                 </small>
-                                <a href='{{ $post->hostname . $post->quoted["user"]["screen_name"] }}'>
+                                <a href='{{ $post->hostname }}/{{ $post->quoted["user"]["screen_name"] }}'>
                                     <img class='avatar' src='{{ $post->quoted["user"]["profile_image_url"] }}'>
                                     <strong class='fullname'>{{ $post->quoted["user"]["name"] }}</strong>
                                     <span class='username'>&commat;{{ $post->quoted["user"]["screen_name"] }}</span>
@@ -51,7 +51,7 @@
                             <span class='js-retweet-text'>
                                 Retweeted by
                                 {{ $post->getUserLink($post->retweet["user"]["name"]) }}
-                                (<a href='{{ $post->hostname . "/" . $post->retweet["user"]["screen_name"] }}'>&commat;{{ $post->retweet["user"]["screen_name"] }}</a>)
+                                (<a href='{{ $post->hostname }}/{{ $post->retweet["user"]["screen_name"] }}'>&commat;{{ $post->retweet["user"]["screen_name"] }}</a>)
                             </span>
                         @endif
                     </span>

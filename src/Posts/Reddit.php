@@ -13,7 +13,7 @@ class Reddit extends AbstractPost
 
         $this->username = $this->data["author"];
         $this->fullname = $this->data["author"];
-        $this->link = $this->hostname . "/" . $this->data["permalink"];
+        $this->link = $this->hostname . $this->data["permalink"];
         if (!in_array($this->data["thumbnail"], ["", "self", "default"], true)) {
             $this->avatar = $this->data["thumbnail"];
         }
