@@ -4,6 +4,7 @@ status=0
 
 cd $(dirname $0)/..
 files=$(find src -name "*.php")
+files="$files bin/get-posts"
 for file in $files; do
     php -l $file
     if [[ $? > 0 ]]; then

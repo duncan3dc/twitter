@@ -18,6 +18,7 @@ install:
 script:
   - ./vendor/bin/phpunit
   - ./tests/lint.sh
+  - ./bin/get-posts
 
 git:
   depth: 5
