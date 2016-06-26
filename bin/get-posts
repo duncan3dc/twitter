@@ -7,4 +7,6 @@ require __DIR__ . "/../vendor/autoload.php";
 
 $cli = new Application("Twitter CLI", "0.1.0");
 
+$cli->loadCommands(__DIR__ . "/../src/Commands", "duncan3dc\\Twitter\\Commands");
+
 $cli->run();
