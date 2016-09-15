@@ -112,12 +112,16 @@ class Twitter extends AbstractPost
                             "path"      =>  $path,
                             "basename"  =>  $image,
                         ]);
-                        $splice["src"] = Image::img([
-                            "path"      =>  $path,
-                            "basename"  =>  $image,
-                            "width"     =>  500,
-                            "height"    =>  500,
-                        ]);
+                        try {
+                            $splice["src"] = Image::img([
+                                "path"      =>  $path,
+                                "basename"  =>  $image,
+                                "width"     =>  500,
+                                "height"    =>  500,
+                            ]);
+                        } catch (\Exception $e) {
+                            $splice["src"] = $media["media_url"];
+                        }
                     } else {
                         $splice["fullsize"] = $media["media_url"];
                         $splice["src"] = $media["media_url"];
