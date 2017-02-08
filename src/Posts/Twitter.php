@@ -149,7 +149,7 @@ class Twitter extends AbstractPost
             return 0;
         });
 
-        $text = $data["text"];
+        $text = $data["full_text"] ?? $data["text"];
         $append = "";
         $adjust = 0;
         foreach ($splices as $val) {
