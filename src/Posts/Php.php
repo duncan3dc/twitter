@@ -27,10 +27,14 @@ class Php extends AbstractPost
         }
 
         $this->link = $this->data["link"];
+
+        if (strpos($this->link, "php.internals")) {
+            $this->link = "https://externals.io/message/" . $this->data["id"];
+        }
     }
 
     public function getHtml()
     {
-        return $this->data["title"] . "<br><a href='" . $this->data["link"] . "'>" . $this->data["link"] . "</a>";
+        return $this->data["title"] . "<br><a href='" . $this->link . "'>" . $this->link . "</a>";
     }
 }
