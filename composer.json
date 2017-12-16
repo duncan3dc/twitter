@@ -10,7 +10,7 @@
         "duncan3dc/sql-class": "^1.6",
         "filp/whoops": "^2.1",
         "league/container": "^2.2",
-        "league/route": "^2.0",
+        "league/route": "^3.0",
         "zendframework/zend-diactoros": "^1.3",
         "php": "^7.0"
     },

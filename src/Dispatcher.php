@@ -3,33 +3,57 @@
 namespace duncan3dc\Twitter;
 
 use duncan3dc\Serial\Json;
-use League\Route\Strategy\RequestResponseStrategy;
+use League\Route\Http\Exception\MethodNotAllowedException;
+use League\Route\Http\Exception\NotFoundException;
+use League\Route\Route;
+use League\Route\Strategy\StrategyInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
-class Dispatcher extends RequestResponseStrategy
+class Dispatcher implements StrategyInterface
 {
     /**
-     * Attempt to build a response.
-     *
-     * @param  mixed $response
-     *
-     * @return \Psr\Http\Message\ResponseInterface
+     * {@inheritdoc}
      */
-    protected function determineResponse($response)
+    public function getCallable(Route $route, array $vars)
     {
-        if ($response instanceof ResponseInterface) {
-            return $response;
-        }
+        return function (ServerRequestInterface $request, ResponseInterface $response, callable $next) use ($route, $vars) {
+            $data = call_user_func_array($route->getCallable(), [$request, $response, $vars]);
 
-        $data = $response;
-        $response = $this->getResponse();
+            if ($data instanceof ResponseInterface) {
+                $response = $data;
+            } else {
+                if (is_array($data)) {
+                    $data = Json::encode($data);
+                }
+                $response->getBody()->write($data);
+            }
 
-        if (is_array($data)) {
-            $data = Json::encode($data);
-        }
+            return $next($request, $response);
+        };
+    }
 
-        $response->getBody()->write($data);
+    /**
+     * {@inheritdoc}
+     */
+    public function getNotFoundDecorator(NotFoundException $exception)
+    {
+        throw $exception;
+    }
 
-        return $response;
+    /**
+     * {@inheritdoc}
+     */
+    public function getMethodNotAllowedDecorator(MethodNotAllowedException $exception)
+    {
+        throw $exception;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExceptionDecorator(\Exception $exception)
+    {
+        throw $exception;
     }
 }
