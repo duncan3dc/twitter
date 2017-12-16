@@ -5,6 +5,7 @@
         "duncan3dc/blade": "^3.0",
         "duncan3dc/domparser": "^1.4",
         "duncan3dc/helpers": "^1.6",
+        "duncan3dc/serial": "^1.0",
         "duncan3dc/sessions": "^1.0",
         "duncan3dc/sql-class": "^1.6",
         "filp/whoops": "^2.1",

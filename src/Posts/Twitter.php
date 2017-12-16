@@ -29,11 +29,11 @@ class Twitter extends AbstractPost
     }
 
 
-    private function convertEntities(array $data)
+    private function convertEntities(\ArrayObject $data)
     {
         $splices = [];
 
-        foreach ($data["entities"]["hashtags"] as $hashtag) {
+        foreach ($data->entities->hashtags as $hashtag) {
             $splices[] = [
                 "type"  =>  "hashtag",
                 "start" =>  $hashtag["indices"][0],
@@ -42,7 +42,7 @@ class Twitter extends AbstractPost
             ];
         }
 
-        foreach ($data["entities"]["user_mentions"] as $mention) {
+        foreach ($data->entities->user_mentions as $mention) {
             $splices[] = [
                 "type"  =>  "mention",
                 "start" =>  $mention["indices"][0],
@@ -51,7 +51,7 @@ class Twitter extends AbstractPost
             ];
         }
 
-        foreach ($data["entities"]["urls"] as $url) {
+        foreach ($data->entities->urls as $url) {
 
             # If this is a quoted tweet then remove the link to the quoted tweet
             if ($this->quoted) {
@@ -84,7 +84,7 @@ class Twitter extends AbstractPost
             $splices[] = $splice;
         }
 
-        $medias = isset($data["entities"]["media"]) ? $data["entities"]["media"] : [];
+        $medias = isset($data->entities->media) ? $data->entities->media : [];
         foreach ($medias as $media) {
             $splice = [
                 "type"  =>  "link",
@@ -149,7 +149,7 @@ class Twitter extends AbstractPost
             return 0;
         });
 
-        $text = $data["full_text"] ?? $data["text"];
+        $text = $data->full_text ?? $data->text;
         $append = "";
         $adjust = 0;
         foreach ($splices as $val) {
