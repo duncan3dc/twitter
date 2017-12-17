@@ -2,7 +2,7 @@
     "name": "duncan3dc/twitter",
     "description": "A webapp showing tweets and posts from other souces",
     "require": {
-        "duncan3dc/blade": "^3.0",
+        "duncan3dc/blade": "^4.0",
         "duncan3dc/domparser": "^1.4",
         "duncan3dc/helpers": "^1.6",
         "duncan3dc/serial": "^1.0",
