@@ -20,8 +20,9 @@ install:
   - composer update $COMPOSER_OPTS
 
 script:
-  - ./vendor/bin/phpunit
-  - ./tests/lint.sh
+  - vendor/bin/phpunit
+  - tests/lint.sh
+  - vendor/bin/composer-require-checker
 
 git:
   depth: 5

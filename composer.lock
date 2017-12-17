@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb05bb1c5edd82f8a48433c21f447be1",
+    "content-hash": "b91128b9b8ccec5f4ac403a98620d5ee",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1602,6 +1602,74 @@
             "time": "2017-07-22T11:58:36+00:00"
         },
         {
+            "name": "maglnet/composer-require-checker",
+            "version": "0.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maglnet/ComposerRequireChecker.git",
+                "reference": "37b180dfe320e6e6777796673971690fcf15cfca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/37b180dfe320e6e6777796673971690fcf15cfca",
+                "reference": "37b180dfe320e6e6777796673971690fcf15cfca",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-phar": "*",
+                "nikic/php-parser": "~3.0",
+                "php": "~7.0",
+                "symfony/console": "~3.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "~6.0"
+            },
+            "bin": [
+                "bin/composer-require-checker"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ComposerRequireChecker\\": "src/ComposerRequireChecker"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.io/"
+                },
+                {
+                    "name": "Matthias Glaub",
+                    "email": "magl@magl.net",
+                    "homepage": "http://magl.net"
+                }
+            ],
+            "description": "CLI tool to analyze composer dependencies and verify that no unknown symbols are used in the sources of a package",
+            "homepage": "https://github.com/Ocramius/ComposerRequireChecker",
+            "keywords": [
+                "analysis",
+                "cli",
+                "composer",
+                "dependency",
+                "imports",
+                "require",
+                "requirements"
+            ],
+            "time": "2017-09-24T14:57:34+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.7.0",
             "source": {
@@ -1645,6 +1713,57 @@
                 "object graph"
             ],
             "time": "2017-10-19T19:58:43+00:00"
+        },
+        {
+            "name": "nikic/php-parser",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "08131e7ff29de6bb9f12275c7d35df71f25f4d89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/08131e7ff29de6bb9f12275c7d35df71f25f4d89",
+                "reference": "08131e7ff29de6bb9f12275c7d35df71f25f4d89",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2017-11-04T11:48:34+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2763,6 +2882,75 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "2cdef78de8f54f68ff16a857e710e7302b47d4c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/2cdef78de8f54f68ff16a857e710e7302b47d4c7",
+                "reference": "2cdef78de8f54f68ff16a857e710e7302b47d4c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/debug": "~2.8|~3.0|~4.0",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<3.4",
+                "symfony/process": "<3.3"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~3.3|~4.0",
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/event-dispatcher": "~2.8|~3.0|~4.0",
+                "symfony/lock": "~3.4|~4.0",
+                "symfony/process": "~3.3|~4.0"
+            },
+            "suggest": {
+                "psr/log": "For using the console logger",
+                "symfony/event-dispatcher": "",
+                "symfony/lock": "",
+                "symfony/process": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Console\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-12-02T18:20:11+00:00"
         },
         {
             "name": "webmozart/assert",
