@@ -1,4 +1,5 @@
 var twitter = {
+    api         :   "http://localhost:3001",
     status      :   1,
     showImages  :   localStorage.getItem("showImages"),
     types       :   JSON.parse(localStorage.getItem("types")),
@@ -30,7 +31,7 @@ var twitter = {
         if($("div.postContainer").length < 20) {
             twitter.loadPosts()
         } else {
-            $.get("/getUnreadCount",function(json) {
+            $.get(twitter.api + "/getUnreadCount",function(json) {
                 var data = JSON.parse(json)
                 $("#savedCounter").html(data.saved)
                 $("#unreadCounter").html(data.unread)
@@ -53,7 +54,7 @@ var twitter = {
         })
 
         $.ajax({
-            url         :   "/get-posts",
+            url         :   twitter.api + "/get-posts",
             type        :   "post",
             data        :   {
                 status      :   twitter.status,
@@ -121,7 +122,7 @@ jQuery.fn.twitterPost = function() {
         })
 
         $.ajax({
-            url         :   "/update-post",
+            url         :   twitter.api + "/update-post",
             type        :   "post",
             data        :   {post : post, status : status},
             dataType    :   "json",
@@ -167,7 +168,7 @@ $(document).ready(function() {
             $("#undo").hide()
         }
         $.ajax({
-            url         :   "/update-post",
+            url         :   twitter.api + "/update-post",
             type        :   "post",
             data        :   {
                 post        :   div.data("post"),
@@ -182,7 +183,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url         :   "/get-user-data",
+        url         :   twitter.api + "/get-user-data",
         type        :   "get",
         dataType    :   "json",
         success     :   function(data) {
@@ -221,7 +222,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url         :   "/get-hashtags",
+        url         :   twitter.api + "/get-hashtags",
         type        :   "get",
         dataType    :   "json",
         success     :   function(data) {
