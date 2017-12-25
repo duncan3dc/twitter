@@ -9,7 +9,7 @@
     <meta name='viewport' content='width=device-width, user-scalable=yes'>
     <link rel='shortcut icon' href='/images/favicon.ico'>
 
-    <link rel='stylesheet' type='text/css' href='/css/font-awesome.css'>
+    <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' type='text/css' href='/css/t1_core.css'>
     <link rel='stylesheet' type='text/css' href='/css/user-style-duncan3dc.css'>
     <link rel='stylesheet' type='text/css' href='/css/stream.css'>
