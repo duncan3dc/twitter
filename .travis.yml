@@ -1,28 +1,48 @@
-language: php
-
-php:
-  - 7.0
-  - 7.1
-  - nightly
-
 matrix:
-  allow_failures:
-  - php: nightly
+  include:
 
-sudo: false
+    - language: php
+      php: 7.0
+      install: travis/php_install.sh
+      script: travis/php_script.sh
 
-env:
-  - COMPOSER_OPTS=""
-  - COMPOSER_OPTS="--prefer-lowest"
+    - language: php
+      php: 7.0
+      install: travis/php_install.sh --prefer-lowest
+      script: travis/php_script.sh
 
-install:
-  - composer self-update
-  - composer update $COMPOSER_OPTS
+    - language: php
+      php: 7.1
+      install: travis/php_install.sh
+      script: travis/php_script.sh
 
-script:
-  - vendor/bin/phpunit
-  - tests/lint.sh
-  - vendor/bin/composer-require-checker
+    - language: php
+      php: 7.1
+      install: travis/php_install.sh --prefer-lowest
+      script: travis/php_script.sh
+
+    - language: php
+      php: 7.2
+      install: travis/php_install.sh
+      script: travis/php_script.sh
+
+    - language: php
+      php: 7.2
+      install: travis/php_install.sh --prefer-lowest
+      script: travis/php_script.sh
+
+    - language: node_js
+      node_js: 7
+      install: travis/js_install.sh
+      script: travis/js_script.sh
+
+    - language: node_js
+      node_js: 8
+      install: travis/js_install.sh
+      script: travis/js_script.sh
 
 git:
   depth: 5
+
+dist: trusty
+sudo: false
