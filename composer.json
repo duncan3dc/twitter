@@ -21,7 +21,7 @@
         "phpunit/phpunit": "^5.2"
     },
     "autoload": {
-        "psr-4": {"duncan3dc\\Twitter\\": "src/"}
+        "psr-4": {"duncan3dc\\Twitter\\": "api/"}
     },
     "autoload-dev": {
         "psr-4": {"duncan3dc\\TwitterTests\\": "tests/"}
