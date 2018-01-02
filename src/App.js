@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TopBar from './TopBar';
+import Stream from './Stream';
 
 import "./css/t1_core.css";
 import "./css/user-style-duncan3dc.css";
@@ -94,17 +95,7 @@ class App extends Component {
                         <h2 className="js-timeline-title">Tweets</h2>
                     </div>
                 </div>
-                <div className="stream-container">
-                    <div className="stream home-stream">
-                        <div className="stream-items" id="stream-items-id">
-                            <div id="loadingPosts">
-                                <i className="fa fa-spinner fa-spin" alt="Loading Tweets..."></i>
-                                <div id="loadingPostsLabel">Loading Tweets...</div>
-                            </div>
-                            <div id="streamTail"></div>
-                        </div>
-                    </div>
-                </div>
+                <Stream />
             </div>
 
         </div>

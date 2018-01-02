@@ -1,105 +1,9 @@
 var twitter = {
-    api         :   "http://localhost:3001",
     status      :   1,
     showImages  :   localStorage.getItem("showImages"),
     types       :   JSON.parse(localStorage.getItem("types")),
     delay       :   localStorage.getItem("delay"),
-    timeout     :   false,
-    loading     :   false,
-    postStack   :   [],
-
-    setStatus   :   function(status) {
-        if(twitter.loading) {
-            setTimeout("twitter.setStatus(" + status + ")",100)
-            return false
-        }
-
-        twitter.status = status
-        twitter.postStack = []
-        $("#undo").hide()
-
-        $(".setStatus").parent().removeClass("active")
-        $(".setStatus[data-status='" + twitter.status + "']").parent().addClass("active")
-
-        $("#loadingPosts").show()
-        $("div.postContainer").remove()
-        clearTimeout(twitter.timeout)
-        twitter.loadPosts()
-    },
-
-    checkPosts  :   function() {
-        if($("div.postContainer").length < 20) {
-            twitter.loadPosts()
-        } else {
-            $.get(twitter.api + "/getUnreadCount",function(json) {
-                var data = JSON.parse(json)
-                $("#savedCounter").html(data.saved)
-                $("#unreadCounter").html(data.unread)
-            })
-            twitter.timeout = setTimeout(twitter.checkPosts,10 * 1000)
-        }
-    },
-
-    loadPosts   :   function() {
-        if(twitter.loading) {
-            return false
-        }
-        twitter.loading = true
-
-        $("#loadingPosts").slideDown()
-
-        var posts = []
-        $("div.postContainer").each(function() {
-            posts[posts.length] = $(this).data("post")
-        })
-
-        $.ajax({
-            url         :   twitter.api + "/get-posts",
-            type        :   "post",
-            data        :   {
-                status      :   twitter.status,
-                types       :   twitter.types,
-                delay       :   twitter.delay,
-                posts       :   posts
-            },
-            dataType    :   "json",
-            error       :   function() {
-                $("#loadingPosts").hide()
-                twitter.timeout = setTimeout(twitter.checkPosts,60 * 1000)
-            },
-            success     :   function(data) {
-                $("#loadingPosts").hide()
-                if(data.posts.length > 0) {
-                    for(var i in data.posts) {
-                        if($("#postContainer_" + data.posts[i].id).length > 0) {
-                            continue
-                        }
-                        var post = $(data.posts[i].html)
-                        $("#loadingPosts").before(post)
-                        post.twitterPost()
-                    }
-                    $("#savedCounter").html(data.saved)
-                    $("#unreadCounter").html(data.unread)
-                    twitter.updatePostCount()
-                }
-                twitter.timeout = setTimeout(twitter.checkPosts,10 * 1000)
-                twitter.loading = false
-            }
-        })
-
-    },
-
-    updatePostCount :   function() {
-        var title = "Twitter"
-
-        var posts = $("div.postContainer").length
-        if(posts > 0) {
-            title += " (" + posts + ")"
-        }
-
-        document.title = title
-    }
-
+    hidden      :   [],
 }
 
 
@@ -111,8 +15,8 @@ jQuery.fn.twitterPost = function() {
         var status = $(this).attr("data-status")
 
         var html = $("<div>").append($("#postContainer_" + post).clone()).html()
-        twitter.postStack.push(html)
-        if(twitter.postStack.length == 1) {
+        twitter.hidden.push(html)
+        if(twitter.hidden.length == 1) {
             $("#undo").show()
         }
 
@@ -122,7 +26,7 @@ jQuery.fn.twitterPost = function() {
         })
 
         $.ajax({
-            url         :   twitter.api + "/update-post",
+            url         :   "http://localhost:3001/update-post",
             type        :   "post",
             data        :   {post : post, status : status},
             dataType    :   "json",
@@ -160,15 +64,15 @@ $(document).ready(function() {
     })
 
     $("#undo").click(function() {
-        var html = twitter.postStack.pop()
+        var html = twitter.hidden.pop()
         var div = $(html)
         $("#stream-items-id").prepend(div)
         div.hide().twitterPost().slideDown()
-        if(twitter.postStack.length < 1) {
+        if(twitter.hidden.length < 1) {
             $("#undo").hide()
         }
         $.ajax({
-            url         :   twitter.api + "/update-post",
+            url         :   "http://localhost:3001/update-post",
             type        :   "post",
             data        :   {
                 post        :   div.data("post"),
@@ -183,7 +87,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url         :   twitter.api + "/get-user-data",
+        url         :   "http://localhost:3001/get-user-data",
         type        :   "get",
         dataType    :   "json",
         success     :   function(data) {
@@ -222,7 +126,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url         :   twitter.api + "/get-hashtags",
+        url         :   "http://localhost:3001/get-hashtags",
         type        :   "get",
         dataType    :   "json",
         success     :   function(data) {
@@ -235,7 +139,4 @@ $(document).ready(function() {
             }
         }
     })
-
-    twitter.setStatus(twitter.status)
-
 })
