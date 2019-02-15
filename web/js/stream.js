@@ -148,8 +148,8 @@ jQuery.fn.twitterPost = function() {
 
 $(document).ready(function() {
 
-    $(document).keypress(function(event) {
-        if(event.keyCode == 46) {
+    $(document).keyup(function(event) {
+        if(event.which == 46) {
             $(".actionPost.active").first().click()
         }
     })
